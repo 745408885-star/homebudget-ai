@@ -1,0 +1,182 @@
+{
+  "module": "kitchen_appliances",
+  "items": [
+    {
+      "id": "v2-item-014",
+      "code": "refrigerator",
+      "name": "冰箱",
+      "category": "家电",
+      "subcategory": "厨房家电",
+      "active": true,
+      "required_level": "essential",
+      "installation_type": "none",
+      "room_types": [
+        "kitchen",
+        "dining_room"
+      ],
+      "quantity_rule": {
+        "strategy": "one_per_household",
+        "subtract_owned": true,
+        "specification": "1人200-300L；2-3人300-450L；4人以上450L+，做饭频率上调"
+      },
+      "minimum_quantity": 0,
+      "maximum_quantity": 2,
+      "base_min_price": 1800,
+      "base_recommended_price": 4000,
+      "base_max_price": 9000,
+      "price_unit": "item",
+      "frequency_score": 10,
+      "health_score": 7,
+      "comfort_score": 8,
+      "lifecycle_score": 8,
+      "energy_score": 9,
+      "replacement_difficulty_score": 7,
+      "price_flexibility_score": 5,
+      "optional": false,
+      "removable": true,
+      "description": "容量由人数、做饭频率和收纳需求共同推断。",
+      "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-020",
+      "code": "freestanding_dishwasher",
+      "name": "独立式洗碗机",
+      "category": "家电",
+      "subcategory": "厨房家电",
+      "active": true,
+      "required_level": "optional",
+      "installation_type": "professional",
+      "room_types": [
+        "kitchen"
+      ],
+      "quantity_rule": {
+        "strategy": "one_if_daily_cooking_and_selected",
+        "subtract_owned": true,
+        "specification": "按人数输出8套/12套+容量并检查独立摆放与上下水"
+      },
+      "minimum_quantity": 0,
+      "maximum_quantity": 1,
+      "base_min_price": 2200,
+      "base_recommended_price": 4000,
+      "base_max_price": 7500,
+      "price_unit": "item",
+      "frequency_score": 6,
+      "health_score": 5,
+      "comfort_score": 8,
+      "lifecycle_score": 7,
+      "energy_score": 6,
+      "replacement_difficulty_score": 6,
+      "price_flexibility_score": 8,
+      "optional": true,
+      "removable": true,
+      "description": "仅独立式；需要改柜或强依赖现场尺寸的嵌入式机型不纳入。",
+      "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-021",
+      "code": "range_hood",
+      "name": "普通油烟机",
+      "category": "家电",
+      "subcategory": "厨房家电",
+      "active": true,
+      "required_level": "essential",
+      "installation_type": "professional",
+      "room_types": [
+        "kitchen"
+      ],
+      "quantity_rule": {
+        "strategy": "one_if_kitchen_and_cooking",
+        "subtract_owned": true,
+        "specification": "按做饭频率输出基础/大风量标签，排烟条件需现场确认"
+      },
+      "minimum_quantity": 0,
+      "maximum_quantity": 1,
+      "base_min_price": 1200,
+      "base_recommended_price": 2500,
+      "base_max_price": 5000,
+      "price_unit": "item",
+      "frequency_score": 9,
+      "health_score": 9,
+      "comfort_score": 7,
+      "lifecycle_score": 8,
+      "energy_score": 6,
+      "replacement_difficulty_score": 7,
+      "price_flexibility_score": 5,
+      "optional": false,
+      "removable": true,
+      "description": "普通成品烟机；复杂烟道改造不计入采购预算。",
+      "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-022",
+      "code": "gas_stove",
+      "name": "普通燃气灶",
+      "category": "家电",
+      "subcategory": "厨房家电",
+      "active": true,
+      "required_level": "essential",
+      "installation_type": "professional",
+      "room_types": [
+        "kitchen"
+      ],
+      "quantity_rule": {
+        "strategy": "one_if_gas_cooking",
+        "subtract_owned": true,
+        "specification": "基础双眼灶，气源与开孔尺寸必须在购买前确认"
+      },
+      "minimum_quantity": 0,
+      "maximum_quantity": 1,
+      "base_min_price": 700,
+      "base_recommended_price": 1500,
+      "base_max_price": 3500,
+      "price_unit": "item",
+      "frequency_score": 9,
+      "health_score": 8,
+      "comfort_score": 6,
+      "lifecycle_score": 8,
+      "energy_score": 7,
+      "replacement_difficulty_score": 7,
+      "price_flexibility_score": 6,
+      "optional": false,
+      "removable": true,
+      "description": "如住宅无燃气或用户选择电磁烹饪，必须排除。",
+      "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-024",
+      "code": "small_appliance_package",
+      "name": "小家电基础包",
+      "category": "家电",
+      "subcategory": "小家电",
+      "active": true,
+      "required_level": "recommended",
+      "installation_type": "none",
+      "room_types": [
+        "kitchen",
+        "living_room"
+      ],
+      "quantity_rule": {
+        "strategy": "one_package_per_household",
+        "subtract_owned": true,
+        "specification": "默认电饭煲、烧水壶与基础清洁电器，按做饭频率调整"
+      },
+      "minimum_quantity": 0,
+      "maximum_quantity": 1,
+      "base_min_price": 800,
+      "base_recommended_price": 2000,
+      "base_max_price": 5000,
+      "price_unit": "package",
+      "frequency_score": 8,
+      "health_score": 4,
+      "comfort_score": 7,
+      "lifecycle_score": 5,
+      "energy_score": 6,
+      "replacement_difficulty_score": 2,
+      "price_flexibility_score": 8,
+      "optional": false,
+      "removable": true,
+      "description": "使用基础包避免把多个低价小家电拆成大量规则项。",
+      "rule_version": "home_setup_v1_draft_1"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "name": "homebudget-ai-frontend",
+  "private": true,
+  "version": "0.1.0-alpha.1",
+  "license": "Apache-2.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "lint": "eslint src --max-warnings=0 && prettier --check \"src/**/*.{ts,tsx,css}\" \"*.{json,ts}\"",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css}\" \"*.{json,ts}\"",
+    "typecheck": "tsc --noEmit -p tsconfig.app.json --pretty false",
+    "build": "tsc --noEmit -p tsconfig.app.json && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.7.0",
+    "eslint": "^9.39.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.26",
+    "globals": "^16.5.0",
+    "prettier": "^3.9.6",
+    "typescript": "~5.6.2",
+    "typescript-eslint": "8.56.1",
+    "vite": "^6.4.3"
+  },
+  "overrides": {
+    "minimatch": "10.2.6",
+    "@typescript-eslint/visitor-keys": {
+      "eslint-visitor-keys": "4.2.1"
+    }
+  }
+}

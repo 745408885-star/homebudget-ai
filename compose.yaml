@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-homebudget_ai}
+      POSTGRES_USER: ${POSTGRES_USER:-homebudget_app}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in local .env}
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - homebudget_postgres_data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-homebudget_app} -d ${POSTGRES_DB:-homebudget_ai}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  homebudget_postgres_data:

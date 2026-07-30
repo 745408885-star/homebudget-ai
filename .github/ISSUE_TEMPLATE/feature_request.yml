@@ -1,0 +1,38 @@
+name: Feature request
+description: Propose a change within the current product scope.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: User problem
+      description: Describe the user need before proposing implementation.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed outcome
+    validations:
+      required: true
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Product area
+      options:
+        - V2 current product line
+        - Backend and data
+        - Developer experience
+        - Documentation
+    validations:
+      required: true
+  - type: checkboxes
+    id: boundaries
+    attributes:
+      label: Scope check
+      options:
+        - label: This request does not present prototype prices as quotations.
+          required: true
+        - label: This request respects the documented V2 product boundary.
+          required: true

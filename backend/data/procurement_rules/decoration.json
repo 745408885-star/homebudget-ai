@@ -1,0 +1,153 @@
+{
+  "module": "decoration",
+  "items": [
+    {
+      "id": "v2-item-028",
+      "code": "rug",
+      "name": "地毯",
+      "category": "软装及入住",
+      "subcategory": "装饰织物",
+      "active": true,
+      "required_level": "optional",
+      "installation_type": "none",
+      "room_types": [
+        "living_room",
+        "master_bedroom",
+        "child_room"
+      ],
+      "quantity_rule": {
+        "strategy": "one_if_appearance_or_comfort_high",
+        "subtract_owned": true,
+        "specification": "按空间尺寸生成小/中/大号标签，有儿童时强调易清洁"
+      },
+      "minimum_quantity": 0,
+      "maximum_quantity": 3,
+      "base_min_price": 300,
+      "base_recommended_price": 1000,
+      "base_max_price": 3500,
+      "price_unit": "item",
+      "frequency_score": 3,
+      "health_score": 2,
+      "comfort_score": 5,
+      "lifecycle_score": 4,
+      "energy_score": 2,
+      "replacement_difficulty_score": 1,
+      "price_flexibility_score": 10,
+      "optional": true,
+      "removable": true,
+      "description": "装饰性强，低预算时优先移除。",
+      "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-029",
+      "code": "wall_art",
+      "name": "装饰画",
+      "category": "软装及入住",
+      "subcategory": "装饰",
+      "active": true,
+      "required_level": "optional",
+      "installation_type": "simple",
+      "room_types": [
+        "living_room",
+        "master_bedroom",
+        "dining_room",
+        "study"
+      ],
+      "quantity_rule": {
+        "strategy": "sets_by_appearance_demand",
+        "subtract_owned": true,
+        "specification": "输出基础组合数量，不含墙体改造"
+      },
+      "minimum_quantity": 0,
+      "maximum_quantity": 6,
+      "base_min_price": 150,
+      "base_recommended_price": 500,
+      "base_max_price": 1800,
+      "price_unit": "set",
+      "frequency_score": 2,
+      "health_score": 1,
+      "comfort_score": 3,
+      "lifecycle_score": 3,
+      "energy_score": 1,
+      "replacement_difficulty_score": 1,
+      "price_flexibility_score": 10,
+      "optional": true,
+      "removable": true,
+      "description": "纯装饰项目，预算紧张时第一批移除。",
+      "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-030",
+      "code": "cushions",
+      "name": "靠垫",
+      "category": "软装及入住",
+      "subcategory": "装饰织物",
+      "active": true,
+      "required_level": "optional",
+      "installation_type": "none",
+      "room_types": [
+        "living_room",
+        "master_bedroom"
+      ],
+      "quantity_rule": {
+        "strategy": "two_to_four_if_sofa_or_bed",
+        "subtract_owned": true,
+        "specification": "按沙发与床数量生成基础组合"
+      },
+      "minimum_quantity": 0,
+      "maximum_quantity": 12,
+      "base_min_price": 80,
+      "base_recommended_price": 180,
+      "base_max_price": 500,
+      "price_unit": "item",
+      "frequency_score": 3,
+      "health_score": 1,
+      "comfort_score": 4,
+      "lifecycle_score": 3,
+      "energy_score": 1,
+      "replacement_difficulty_score": 1,
+      "price_flexibility_score": 10,
+      "optional": true,
+      "removable": true,
+      "description": "可随时补购，低预算时延后。",
+      "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-031",
+      "code": "plants",
+      "name": "绿植",
+      "category": "软装及入住",
+      "subcategory": "装饰",
+      "active": true,
+      "required_level": "optional",
+      "installation_type": "none",
+      "room_types": [
+        "living_room",
+        "balcony",
+        "study"
+      ],
+      "quantity_rule": {
+        "strategy": "units_by_appearance_demand",
+        "subtract_owned": true,
+        "specification": "按空间采光输出易养护小/中型组合"
+      },
+      "minimum_quantity": 0,
+      "maximum_quantity": 10,
+      "base_min_price": 80,
+      "base_recommended_price": 250,
+      "base_max_price": 800,
+      "price_unit": "item",
+      "frequency_score": 2,
+      "health_score": 2,
+      "comfort_score": 4,
+      "lifecycle_score": 2,
+      "energy_score": 1,
+      "replacement_difficulty_score": 1,
+      "price_flexibility_score": 10,
+      "optional": true,
+      "removable": true,
+      "description": "低频装饰项目，必须在预算不足时优先移除。",
+      "rule_version": "home_setup_v1_draft_1"
+    }
+  ]
+}

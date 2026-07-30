@@ -1,0 +1,44 @@
+{
+  "module": "climate",
+  "items": [
+    {
+      "id": "v2-item-013",
+      "code": "split_air_conditioner",
+      "name": "普通分体空调",
+      "category": "家电",
+      "subcategory": "环境电器",
+      "active": true,
+      "required_level": "recommended",
+      "installation_type": "professional",
+      "room_types": [
+        "living_room",
+        "master_bedroom",
+        "bedroom",
+        "child_room",
+        "study"
+      ],
+      "quantity_rule": {
+        "strategy": "one_per_frequently_used_conditioned_room",
+        "subtract_owned": true,
+        "specification": "按房间面积输出1匹/1.5匹/2匹及变频标签"
+      },
+      "minimum_quantity": 0,
+      "maximum_quantity": 10,
+      "base_min_price": 2200,
+      "base_recommended_price": 3500,
+      "base_max_price": 6500,
+      "price_unit": "room",
+      "frequency_score": 8,
+      "health_score": 5,
+      "comfort_score": 10,
+      "lifecycle_score": 8,
+      "energy_score": 9,
+      "replacement_difficulty_score": 8,
+      "price_flexibility_score": 5,
+      "optional": false,
+      "removable": true,
+      "description": "仅普通分体机；中央空调、打孔改造和复杂高空安装另行评估。",
+      "rule_version": "home_setup_v1_draft_1"
+    }
+  ]
+}

@@ -1,0 +1,378 @@
+{
+  "categories": [
+    {
+      "id": "cat-01",
+      "code": "basic_construction",
+      "name": "基础施工",
+      "description": "拆改、泥瓦、墙顶面等基础工程"
+    },
+    {
+      "id": "cat-02",
+      "code": "plumbing_electrical",
+      "name": "水电工程",
+      "description": "给排水、强弱电、防水等隐蔽工程"
+    },
+    {
+      "id": "cat-03",
+      "code": "kitchen_bathroom",
+      "name": "厨房卫浴",
+      "description": "厨房和卫生间的核心设备与配套"
+    },
+    {
+      "id": "cat-04",
+      "code": "whole_house_customization",
+      "name": "全屋定制",
+      "description": "衣柜、玄关柜及固定收纳系统"
+    },
+    {
+      "id": "cat-05",
+      "code": "furniture",
+      "name": "家具",
+      "description": "床、沙发、餐桌椅等可移动家具"
+    },
+    {
+      "id": "cat-06",
+      "code": "appliances",
+      "name": "家电",
+      "description": "空调、冰箱、洗衣机及厨房电器"
+    },
+    {
+      "id": "cat-07",
+      "code": "soft_furnishings",
+      "name": "软装",
+      "description": "窗帘、灯具、床品及装饰用品"
+    },
+    {
+      "id": "cat-08",
+      "code": "contingency",
+      "name": "备用金",
+      "description": "用于价格波动、增项和意外支出的预留资金"
+    }
+  ],
+  "items": [
+    {
+      "id": "item-001",
+      "code": "demolition",
+      "name": "拆除与清运",
+      "category": "基础施工",
+      "minimum_budget": 2000,
+      "recommended_budget": 5000,
+      "maximum_budget": 10000,
+      "weight": 5,
+      "priority": 3,
+      "description": "根据原始户型改造范围安排拆除和建筑垃圾清运"
+    },
+    {
+      "id": "item-002",
+      "code": "masonry_tiling",
+      "name": "泥瓦与铺贴",
+      "category": "基础施工",
+      "minimum_budget": 8000,
+      "recommended_budget": 15000,
+      "maximum_budget": 30000,
+      "weight": 9,
+      "priority": 1,
+      "description": "关系到墙地面平整度、瓷砖铺贴质量和长期耐用性"
+    },
+    {
+      "id": "item-003",
+      "code": "wall_ceiling_finish",
+      "name": "墙顶面工程",
+      "category": "基础施工",
+      "minimum_budget": 6000,
+      "recommended_budget": 12000,
+      "maximum_budget": 25000,
+      "weight": 7,
+      "priority": 2,
+      "description": "包含基层处理、腻子、乳胶漆和必要的吊顶施工"
+    },
+    {
+      "id": "item-004",
+      "code": "plumbing_electrical_rebuild",
+      "name": "水电改造",
+      "category": "水电工程",
+      "minimum_budget": 8000,
+      "recommended_budget": 15000,
+      "maximum_budget": 30000,
+      "weight": 10,
+      "priority": 1,
+      "description": "隐蔽工程返工成本高，应优先保证材料和施工质量"
+    },
+    {
+      "id": "item-005",
+      "code": "waterproofing",
+      "name": "防水工程",
+      "category": "水电工程",
+      "minimum_budget": 3000,
+      "recommended_budget": 6000,
+      "maximum_budget": 12000,
+      "weight": 10,
+      "priority": 1,
+      "description": "厨房、卫生间和阳台防水直接影响居住安全与邻里风险"
+    },
+    {
+      "id": "item-006",
+      "code": "network_wiring",
+      "name": "网络与弱电",
+      "category": "水电工程",
+      "minimum_budget": 1500,
+      "recommended_budget": 3500,
+      "maximum_budget": 8000,
+      "weight": 6,
+      "priority": 3,
+      "description": "提前规划网口、无线覆盖、影音和智能家居线路"
+    },
+    {
+      "id": "item-007",
+      "code": "kitchen_cabinets",
+      "name": "橱柜与台面",
+      "category": "厨房卫浴",
+      "minimum_budget": 10000,
+      "recommended_budget": 20000,
+      "maximum_budget": 45000,
+      "weight": 9,
+      "priority": 1,
+      "description": "决定厨房操作效率、收纳能力和高频使用体验"
+    },
+    {
+      "id": "item-008",
+      "code": "sanitary_ware",
+      "name": "卫浴洁具",
+      "category": "厨房卫浴",
+      "minimum_budget": 8000,
+      "recommended_budget": 16000,
+      "maximum_budget": 35000,
+      "weight": 9,
+      "priority": 1,
+      "description": "包含马桶、花洒、浴室柜等高频且长期使用的设备"
+    },
+    {
+      "id": "item-009",
+      "code": "kitchen_bath_hardware",
+      "name": "厨卫五金",
+      "category": "厨房卫浴",
+      "minimum_budget": 3000,
+      "recommended_budget": 7000,
+      "maximum_budget": 15000,
+      "weight": 7,
+      "priority": 2,
+      "description": "龙头、地漏、拉篮和挂件等小件会显著影响使用便利性"
+    },
+    {
+      "id": "item-010",
+      "code": "wardrobes",
+      "name": "卧室衣柜",
+      "category": "全屋定制",
+      "minimum_budget": 12000,
+      "recommended_budget": 25000,
+      "maximum_budget": 60000,
+      "weight": 8,
+      "priority": 2,
+      "description": "承担主要衣物收纳，应结合居住人数和长期容量规划"
+    },
+    {
+      "id": "item-011",
+      "code": "entryway_cabinet",
+      "name": "玄关柜",
+      "category": "全屋定制",
+      "minimum_budget": 3000,
+      "recommended_budget": 8000,
+      "maximum_budget": 18000,
+      "weight": 6,
+      "priority": 3,
+      "description": "集中解决鞋履、外套和日常随身物品的入户收纳"
+    },
+    {
+      "id": "item-012",
+      "code": "custom_storage",
+      "name": "定制收纳系统",
+      "category": "全屋定制",
+      "minimum_budget": 8000,
+      "recommended_budget": 18000,
+      "maximum_budget": 40000,
+      "weight": 7,
+      "priority": 2,
+      "description": "根据家庭物品数量补充餐边柜、家政柜和书柜等固定收纳"
+    },
+    {
+      "id": "item-013",
+      "code": "mattress",
+      "name": "床垫",
+      "category": "家具",
+      "minimum_budget": 3000,
+      "recommended_budget": 6000,
+      "maximum_budget": 15000,
+      "weight": 8,
+      "priority": 1,
+      "description": "每天长时间使用，直接影响睡眠质量"
+    },
+    {
+      "id": "item-014",
+      "code": "bed_frame",
+      "name": "床与床架",
+      "category": "家具",
+      "minimum_budget": 3000,
+      "recommended_budget": 7000,
+      "maximum_budget": 16000,
+      "weight": 7,
+      "priority": 2,
+      "description": "提供稳定睡眠支撑，并需与卧室空间和收纳方案匹配"
+    },
+    {
+      "id": "item-015",
+      "code": "sofa",
+      "name": "沙发",
+      "category": "家具",
+      "minimum_budget": 5000,
+      "recommended_budget": 12000,
+      "maximum_budget": 30000,
+      "weight": 6,
+      "priority": 3,
+      "description": "客厅高频家具，应结合常住人数、娱乐方式和空间尺度选择"
+    },
+    {
+      "id": "item-016",
+      "code": "dining_set",
+      "name": "餐桌椅",
+      "category": "家具",
+      "minimum_budget": 2000,
+      "recommended_budget": 5000,
+      "maximum_budget": 12000,
+      "weight": 5,
+      "priority": 4,
+      "description": "满足家庭日常用餐，并兼顾临时办公和会客需求"
+    },
+    {
+      "id": "item-017",
+      "code": "air_conditioning",
+      "name": "空调系统",
+      "category": "家电",
+      "minimum_budget": 6000,
+      "recommended_budget": 15000,
+      "maximum_budget": 35000,
+      "weight": 8,
+      "priority": 1,
+      "description": "影响全年室内舒适度，应根据面积、房间数量和气候配置"
+    },
+    {
+      "id": "item-018",
+      "code": "refrigerator",
+      "name": "冰箱",
+      "category": "家电",
+      "minimum_budget": 3000,
+      "recommended_budget": 6000,
+      "maximum_budget": 15000,
+      "weight": 7,
+      "priority": 2,
+      "description": "容量和保鲜能力需匹配居住人数与做饭频率"
+    },
+    {
+      "id": "item-019",
+      "code": "laundry_appliances",
+      "name": "洗衣与烘干设备",
+      "category": "家电",
+      "minimum_budget": 3000,
+      "recommended_budget": 8000,
+      "maximum_budget": 18000,
+      "weight": 6,
+      "priority": 3,
+      "description": "根据家庭人口、晾晒条件和家务习惯选择配置"
+    },
+    {
+      "id": "item-020",
+      "code": "cooking_appliances",
+      "name": "厨房电器",
+      "category": "家电",
+      "minimum_budget": 3000,
+      "recommended_budget": 8000,
+      "maximum_budget": 20000,
+      "weight": 7,
+      "priority": 2,
+      "description": "包含烟机灶具等设备，预算应随做饭频率提高"
+    },
+    {
+      "id": "item-021",
+      "code": "curtains",
+      "name": "窗帘",
+      "category": "软装",
+      "minimum_budget": 2000,
+      "recommended_budget": 5000,
+      "maximum_budget": 12000,
+      "weight": 5,
+      "priority": 4,
+      "description": "兼顾遮光、隐私、隔热和整体空间氛围"
+    },
+    {
+      "id": "item-022",
+      "code": "decorative_lighting",
+      "name": "灯具",
+      "category": "软装",
+      "minimum_budget": 3000,
+      "recommended_budget": 8000,
+      "maximum_budget": 20000,
+      "weight": 6,
+      "priority": 3,
+      "description": "满足基础照明、重点照明和居住氛围需求"
+    },
+    {
+      "id": "item-023",
+      "code": "bedding_decor",
+      "name": "床品与装饰",
+      "category": "软装",
+      "minimum_budget": 2000,
+      "recommended_budget": 6000,
+      "maximum_budget": 15000,
+      "weight": 4,
+      "priority": 5,
+      "description": "在核心工程完成后用于提升舒适度和视觉完整性"
+    },
+    {
+      "id": "item-024",
+      "code": "decorative_accessories",
+      "name": "装饰摆件",
+      "category": "软装",
+      "minimum_budget": 1000,
+      "recommended_budget": 5000,
+      "maximum_budget": 15000,
+      "weight": 2,
+      "priority": 5,
+      "description": "主要提升视觉效果，预算不足时可优先延后购买"
+    },
+    {
+      "id": "item-025",
+      "code": "home_entertainment",
+      "name": "家庭影音娱乐",
+      "category": "家电",
+      "minimum_budget": 2000,
+      "recommended_budget": 8000,
+      "maximum_budget": 30000,
+      "weight": 3,
+      "priority": 5,
+      "description": "用于电视、音响或游戏设备，可根据娱乐需求调整"
+    },
+    {
+      "id": "item-026",
+      "code": "smart_home_devices",
+      "name": "非必要智能设备",
+      "category": "家电",
+      "minimum_budget": 1000,
+      "recommended_budget": 6000,
+      "maximum_budget": 20000,
+      "weight": 2,
+      "priority": 5,
+      "description": "提供自动化便利，但不影响基础居住功能"
+    },
+    {
+      "id": "item-027",
+      "code": "project_contingency",
+      "name": "项目备用金",
+      "category": "备用金",
+      "minimum_budget": 10000,
+      "recommended_budget": 20000,
+      "maximum_budget": 2000000,
+      "weight": 10,
+      "priority": 1,
+      "description": "预留给施工增项、材料价格波动和不可预见支出"
+    }
+  ]
+}

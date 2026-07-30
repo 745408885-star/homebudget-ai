@@ -1,0 +1,31 @@
+.progress {
+  margin-bottom: 28px;
+}
+
+.track {
+  height: 4px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #dde3de;
+}
+
+.track span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--primary);
+  transition: width 280ms ease;
+}
+
+.labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 9px;
+  color: #9aa49f;
+  font-size: 10px;
+}
+
+.labels .active {
+  color: var(--primary);
+  font-weight: 700;
+}

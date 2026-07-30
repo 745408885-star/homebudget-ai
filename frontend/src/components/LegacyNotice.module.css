@@ -1,0 +1,48 @@
+.notice {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid rgba(20, 92, 79, 0.18);
+  padding: 12px max(16px, calc((100% - var(--page-width)) / 2));
+  color: var(--ink);
+  background: #edf4ef;
+}
+
+.notice div {
+  display: grid;
+  gap: 3px;
+}
+
+.notice strong {
+  color: var(--primary);
+  font-size: 13px;
+}
+
+.notice span,
+.notice a {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.notice span {
+  color: var(--muted);
+}
+
+.notice a {
+  flex: 0 0 auto;
+  color: var(--primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.notice a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .notice {
+    display: grid;
+  }
+}

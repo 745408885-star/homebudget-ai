@@ -1,0 +1,78 @@
+.shell {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 84% 0%, rgba(238, 192, 134, 0.2), transparent 28%),
+    var(--cream);
+}
+
+.header {
+  display: grid;
+  width: min(100% - 28px, 1180px);
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 10px;
+  margin: 0 auto;
+  border-bottom: 1px solid var(--line);
+  padding: 16px 0;
+}
+
+.brandButton {
+  border: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.productStatus {
+  display: grid;
+  gap: 2px;
+  justify-self: start;
+  border-radius: 10px;
+  padding: 6px 9px;
+  color: #8c542e;
+  background: #f8ead8;
+}
+
+.productStatus strong,
+.productStatus span {
+  font-size: 10px;
+}
+
+.productStatus strong {
+  font-weight: 700;
+}
+
+.productStatus span {
+  color: #93694d;
+}
+
+.actions {
+  display: flex;
+  grid-column: 1 / -1;
+  align-items: center;
+  gap: 12px;
+}
+
+.legacyLink,
+.clear {
+  border: 0;
+  padding: 4px 0;
+  color: var(--muted);
+  background: transparent;
+  font-size: 11px;
+  text-decoration: none;
+}
+
+.clear {
+  color: #934d3f;
+}
+
+@media (min-width: 720px) {
+  .header {
+    grid-template-columns: auto auto 1fr;
+  }
+
+  .actions {
+    grid-column: auto;
+    justify-self: end;
+  }
+}

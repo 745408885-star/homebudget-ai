@@ -1,0 +1,51 @@
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.mark {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border-radius: 13px 13px 8px 8px;
+  color: white;
+  background: var(--primary);
+  box-shadow: 0 7px 20px rgba(20, 92, 79, 0.2);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.name {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.tagline {
+  display: none;
+  padding-left: 10px;
+  border-left: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.compact .mark {
+  width: 32px;
+  height: 32px;
+  border-radius: 11px 11px 7px 7px;
+  font-size: 14px;
+}
+
+.compact .name {
+  font-size: 18px;
+}
+
+@media (min-width: 640px) {
+  .tagline {
+    display: inline;
+  }
+}

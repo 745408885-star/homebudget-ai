@@ -1,0 +1,168 @@
+{
+  "schema_version": "phase6a-scenarios-1",
+  "detail_table_columns": [
+    "item_code",
+    "name",
+    "status",
+    "quantity",
+    "specification_label",
+    "recommended_range_min",
+    "recommended_range_max",
+    "current_budget",
+    "room_assignments",
+    "explanation"
+  ],
+  "scenarios": [
+    {
+      "id": "S01_SINGLE_ONE_BED_OWNS_TV_FRIDGE",
+      "name": "一室一厅单人居住，已有电视和冰箱",
+      "input": {
+        "city": "杭州", "area": 52, "house_type": "一室一厅", "bedroom_count": 1, "living_room_count": 1, "bathroom_count": 1, "kitchen_count": 1, "balcony_count": 1,
+        "resident_count": 1, "adult_count": 1, "child_count": 0, "elderly_count": 0, "expected_years": 5, "usage_type": "self_use",
+        "cooking_frequency": "sometimes", "sleep_demand": "medium", "storage_demand": "medium", "entertainment_demand": "medium", "smart_home_demand": "low",
+        "appearance_demand": "medium", "energy_saving_demand": "medium", "durability_demand": "medium", "quietness_demand": "medium",
+        "brand_preference": "balanced", "accepts_budget_brands": true,
+        "owned_items": [
+          {"item_code": "television", "quantity": 1, "condition": "good", "continue_using": true},
+          {"item_code": "refrigerator", "quantity": 1, "condition": "acceptable", "continue_using": true}
+        ],
+        "item_preferences": [], "rooms": [], "total_budget": 80000
+      },
+      "expected": {"owned_zero_budget": ["television", "refrigerator"], "budget_conservation": true, "emit_detail_table": true}
+    },
+    {
+      "id": "S02_COUPLE_TWO_BED_SLEEP_COOKING",
+      "name": "两室一厅夫妻自住，重视睡眠和做饭",
+      "input": {
+        "city": "上海", "area": 88, "house_type": "两室一厅", "bedroom_count": 2, "living_room_count": 1, "bathroom_count": 1, "kitchen_count": 1, "balcony_count": 1,
+        "resident_count": 2, "adult_count": 2, "child_count": 0, "elderly_count": 0, "expected_years": 10, "usage_type": "self_use",
+        "cooking_frequency": "daily", "sleep_demand": "high", "storage_demand": "medium", "entertainment_demand": "medium", "smart_home_demand": "medium",
+        "appearance_demand": "medium", "energy_saving_demand": "high", "durability_demand": "high", "quietness_demand": "high",
+        "brand_preference": "balanced", "accepts_budget_brands": true,
+        "owned_items": [], "item_preferences": [], "rooms": [], "total_budget": 180000
+      },
+      "expected": {"protected_items": ["mattress", "bed_frame", "refrigerator", "range_hood", "gas_stove"], "budget_conservation": true, "emit_detail_table": true}
+    },
+    {
+      "id": "S03_FAMILY_WITH_CHILD_HIGH_STORAGE",
+      "name": "三室两厅三口之家，有儿童，高收纳需求",
+      "input": {
+        "city": "杭州", "area": 118, "house_type": "三室两厅", "bedroom_count": 3, "living_room_count": 2, "bathroom_count": 2, "kitchen_count": 1, "balcony_count": 1,
+        "resident_count": 3, "adult_count": 2, "child_count": 1, "elderly_count": 0, "expected_years": 12, "usage_type": "self_use",
+        "cooking_frequency": "daily", "sleep_demand": "high", "storage_demand": "high", "entertainment_demand": "medium", "smart_home_demand": "medium",
+        "appearance_demand": "medium", "energy_saving_demand": "high", "durability_demand": "high", "quietness_demand": "high",
+        "brand_preference": "balanced", "accepts_budget_brands": true,
+        "owned_items": [], "item_preferences": [], "rooms": [], "total_budget": 260000
+      },
+      "expected": {"required_items": ["children_furniture"], "storage_quantity_increase": true, "budget_conservation": true, "emit_detail_table": true}
+    },
+    {
+      "id": "S04_RENTAL_DURABLE_LOW_BUDGET",
+      "name": "三室两厅出租房，追求耐用和低预算",
+      "input": {
+        "city": "成都", "area": 105, "house_type": "三室两厅", "bedroom_count": 3, "living_room_count": 2, "bathroom_count": 2, "kitchen_count": 1, "balcony_count": 1,
+        "resident_count": 3, "adult_count": 3, "child_count": 0, "elderly_count": 0, "expected_years": 5, "usage_type": "rental",
+        "cooking_frequency": "sometimes", "sleep_demand": "medium", "storage_demand": "low", "entertainment_demand": "low", "smart_home_demand": "low",
+        "appearance_demand": "low", "energy_saving_demand": "medium", "durability_demand": "high", "quietness_demand": "medium",
+        "brand_preference": "value", "accepts_budget_brands": true,
+        "owned_items": [],
+        "item_preferences": [
+          {"item_code": "smart_speaker", "status": "exclude"},
+          {"item_code": "rug", "status": "exclude"},
+          {"item_code": "wall_art", "status": "exclude"}
+        ],
+        "rooms": [], "total_budget": 100000
+      },
+      "expected": {"prefer_value_and_durability": true, "excluded_zero_budget": ["smart_speaker", "rug", "wall_art"], "budget_conservation": true, "emit_detail_table": true}
+    },
+    {
+      "id": "S05_LARGE_MULTI_RESIDENT_HIGH_LAUNDRY_AC",
+      "name": "四室两厅多人家庭，空调和洗衣需求高",
+      "input": {
+        "city": "广州", "area": 165, "house_type": "四室两厅", "bedroom_count": 4, "living_room_count": 2, "bathroom_count": 2, "kitchen_count": 1, "balcony_count": 2,
+        "resident_count": 6, "adult_count": 4, "child_count": 1, "elderly_count": 1, "expected_years": 15, "usage_type": "self_use",
+        "cooking_frequency": "daily", "sleep_demand": "high", "storage_demand": "high", "entertainment_demand": "high", "smart_home_demand": "medium",
+        "appearance_demand": "medium", "energy_saving_demand": "high", "durability_demand": "high", "quietness_demand": "high",
+        "brand_preference": "balanced", "accepts_budget_brands": true,
+        "owned_items": [],
+        "item_preferences": [
+          {"item_code": "dryer", "status": "need"}
+        ],
+        "rooms": [], "total_budget": 400000
+      },
+      "expected": {"minimum_split_ac_quantity": 5, "required_items": ["washing_machine", "dryer"], "large_capacity_labels": true, "budget_conservation": true, "emit_detail_table": true}
+    },
+    {
+      "id": "S06_NO_TELEVISION",
+      "name": "用户不看电视，电视预算必须为0",
+      "input": {
+        "city": "南京", "area": 92, "house_type": "两室一厅", "bedroom_count": 2, "living_room_count": 1, "bathroom_count": 1, "kitchen_count": 1, "balcony_count": 1,
+        "resident_count": 2, "adult_count": 2, "child_count": 0, "elderly_count": 0, "expected_years": 8, "usage_type": "self_use",
+        "cooking_frequency": "often", "sleep_demand": "medium", "storage_demand": "medium", "entertainment_demand": "low", "smart_home_demand": "low",
+        "appearance_demand": "medium", "energy_saving_demand": "medium", "durability_demand": "medium", "quietness_demand": "medium",
+        "brand_preference": "balanced", "accepts_budget_brands": true,
+        "owned_items": [], "item_preferences": [{"item_code": "television", "status": "exclude"}], "rooms": [], "total_budget": 160000
+      },
+      "expected": {"excluded_zero_budget": ["television"], "budget_conservation": true, "emit_detail_table": true}
+    },
+    {
+      "id": "S07_OWNS_WASHING_MACHINE",
+      "name": "用户已有洗衣机，洗衣机预算必须为0",
+      "input": {
+        "city": "苏州", "area": 96, "house_type": "两室两厅", "bedroom_count": 2, "living_room_count": 2, "bathroom_count": 1, "kitchen_count": 1, "balcony_count": 1,
+        "resident_count": 2, "adult_count": 2, "child_count": 0, "elderly_count": 0, "expected_years": 8, "usage_type": "self_use",
+        "cooking_frequency": "often", "sleep_demand": "medium", "storage_demand": "medium", "entertainment_demand": "medium", "smart_home_demand": "medium",
+        "appearance_demand": "medium", "energy_saving_demand": "high", "durability_demand": "high", "quietness_demand": "medium",
+        "brand_preference": "balanced", "accepts_budget_brands": true,
+        "owned_items": [{"item_code": "washing_machine", "quantity": 1, "condition": "good", "continue_using": true}],
+        "item_preferences": [], "rooms": [], "total_budget": 180000
+      },
+      "expected": {"owned_zero_budget": ["washing_machine"], "budget_conservation": true, "emit_detail_table": true}
+    },
+    {
+      "id": "S08_DRYER_LATER",
+      "name": "用户选择烘干机以后再买，当前预算为0",
+      "input": {
+        "city": "武汉", "area": 108, "house_type": "三室两厅", "bedroom_count": 3, "living_room_count": 2, "bathroom_count": 2, "kitchen_count": 1, "balcony_count": 1,
+        "resident_count": 3, "adult_count": 2, "child_count": 1, "elderly_count": 0, "expected_years": 10, "usage_type": "self_use",
+        "cooking_frequency": "often", "sleep_demand": "high", "storage_demand": "high", "entertainment_demand": "medium", "smart_home_demand": "medium",
+        "appearance_demand": "medium", "energy_saving_demand": "high", "durability_demand": "high", "quietness_demand": "high",
+        "brand_preference": "balanced", "accepts_budget_brands": true,
+        "owned_items": [], "item_preferences": [{"item_code": "dryer", "status": "later"}], "rooms": [], "total_budget": 200000
+      },
+      "expected": {"deferred_zero_budget": ["dryer"], "budget_conservation": true, "emit_detail_table": true}
+    },
+    {
+      "id": "S09_LOW_BUDGET_REMOVE_DECOR_SMART",
+      "name": "预算较低时优先移除装饰和智能设备",
+      "input": {
+        "city": "重庆", "area": 82, "house_type": "两室一厅", "bedroom_count": 2, "living_room_count": 1, "bathroom_count": 1, "kitchen_count": 1, "balcony_count": 1,
+        "resident_count": 2, "adult_count": 2, "child_count": 0, "elderly_count": 0, "expected_years": 5, "usage_type": "self_use",
+        "cooking_frequency": "sometimes", "sleep_demand": "medium", "storage_demand": "medium", "entertainment_demand": "low", "smart_home_demand": "low",
+        "appearance_demand": "low", "energy_saving_demand": "medium", "durability_demand": "medium", "quietness_demand": "medium",
+        "brand_preference": "value", "accepts_budget_brands": true,
+        "owned_items": [], "item_preferences": [], "rooms": [], "total_budget": 70000
+      },
+      "expected": {"remove_before_essentials": ["wall_art", "plants", "cushions", "smart_speaker", "smart_lighting_devices", "basic_sensors"], "budget_conservation": true, "emit_detail_table": true}
+    },
+    {
+      "id": "S10_STRICT_BUDGET_CONSERVATION",
+      "name": "标准三口之家，验证预算模式C严格守恒",
+      "input": {
+        "city": "杭州", "area": 100, "house_type": "三室两厅", "bedroom_count": 3, "living_room_count": 2, "bathroom_count": 2, "kitchen_count": 1, "balcony_count": 1,
+        "resident_count": 3, "adult_count": 2, "child_count": 1, "elderly_count": 0, "expected_years": 10, "usage_type": "self_use",
+        "cooking_frequency": "daily", "sleep_demand": "high", "storage_demand": "medium", "entertainment_demand": "low", "smart_home_demand": "medium",
+        "appearance_demand": "medium", "energy_saving_demand": "high", "durability_demand": "high", "quietness_demand": "high",
+        "brand_preference": "balanced", "accepts_budget_brands": true,
+        "owned_items": [], "item_preferences": [], "rooms": [], "total_budget": 280000
+      },
+      "expected": {
+        "budget_mode": "ceiling",
+        "allocated_budget_lte_total": true,
+        "budget_equation": "allocated_budget + upgrade_budget + reserve_budget + unallocated_budget = total_budget",
+        "budget_conservation": true,
+        "emit_detail_table": true
+      }
+    }
+  ]
+}

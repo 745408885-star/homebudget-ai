@@ -1,0 +1,323 @@
+{
+  "rule_version": "home_setup_v1_draft_1",
+  "status": "draft",
+  "currency": "CNY",
+  "price_note": "内部规则初值，表示单件或单套价格，不是商品报价；上线前必须完成城市与渠道价格校准。",
+  "legacy_catalog_policy": {
+    "copy_all_existing_rules_as_inactive": true,
+    "hard_finish_codes": [
+      "demolition",
+      "masonry_tiling",
+      "wall_ceiling_finish",
+      "plumbing_electrical_rebuild",
+      "waterproofing",
+      "network_wiring",
+      "kitchen_cabinets",
+      "sanitary_ware",
+      "kitchen_bath_hardware",
+      "wardrobes",
+      "entryway_cabinet",
+      "custom_storage",
+      "project_contingency"
+    ],
+    "note": "切换时将旧规则复制到 V2 规则目录并统一 active=false；旧 budget_items 与历史快照原样保留。"
+  },
+  "items": [
+    {
+      "id": "v2-item-001", "code": "bed_frame", "name": "床架", "category": "家具", "subcategory": "卧室家具", "active": true,
+      "required_level": "essential", "installation_type": "simple", "room_types": ["master_bedroom", "bedroom", "child_room"],
+      "quantity_rule": {"strategy": "beds_by_sleeping_rooms", "subtract_owned": true, "specification": "按使用者与房间面积选择单人/双人尺寸"},
+      "minimum_quantity": 0, "maximum_quantity": 8, "base_min_price": 1500, "base_recommended_price": 3500, "base_max_price": 8000, "price_unit": "item",
+      "frequency_score": 10, "health_score": 6, "comfort_score": 8, "lifecycle_score": 8, "energy_score": 1, "replacement_difficulty_score": 7, "price_flexibility_score": 6,
+      "optional": false, "removable": true, "description": "按实际睡眠房间和使用人数配置，已有可继续使用床架时扣减数量。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-002", "code": "mattress", "name": "床垫", "category": "家具", "subcategory": "卧室家具", "active": true,
+      "required_level": "essential", "installation_type": "none", "room_types": ["master_bedroom", "bedroom", "child_room"],
+      "quantity_rule": {"strategy": "one_per_active_bed", "subtract_owned": true, "specification": "尺寸跟随床架；高睡眠需求提高支撑与静音等级"},
+      "minimum_quantity": 0, "maximum_quantity": 8, "base_min_price": 1800, "base_recommended_price": 4500, "base_max_price": 10000, "price_unit": "item",
+      "frequency_score": 10, "health_score": 10, "comfort_score": 10, "lifecycle_score": 7, "energy_score": 1, "replacement_difficulty_score": 6, "price_flexibility_score": 5,
+      "optional": false, "removable": true, "description": "高频健康相关项目，预算紧张时仍优先保护基本品质。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-003", "code": "sofa", "name": "沙发", "category": "家具", "subcategory": "客厅家具", "active": true,
+      "required_level": "recommended", "installation_type": "simple", "room_types": ["living_room"],
+      "quantity_rule": {"strategy": "one_per_living_room", "subtract_owned": true, "specification": "座位数不低于常住人数且受客厅面积约束"},
+      "minimum_quantity": 0, "maximum_quantity": 2, "base_min_price": 2500, "base_recommended_price": 6000, "base_max_price": 15000, "price_unit": "item",
+      "frequency_score": 8, "health_score": 4, "comfort_score": 8, "lifecycle_score": 7, "energy_score": 1, "replacement_difficulty_score": 6, "price_flexibility_score": 7,
+      "optional": false, "removable": true, "description": "根据客厅数量、面积、居住人数与娱乐需求确定尺寸。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-004", "code": "dining_set", "name": "餐桌椅", "category": "家具", "subcategory": "餐厅家具", "active": true,
+      "required_level": "recommended", "installation_type": "simple", "room_types": ["dining_room", "living_room"],
+      "quantity_rule": {"strategy": "one_set_if_home_dining", "subtract_owned": true, "specification": "座位数=max(2,常住人数)，每日做饭预留1-2个临时座位"},
+      "minimum_quantity": 0, "maximum_quantity": 2, "base_min_price": 1500, "base_recommended_price": 3500, "base_max_price": 8000, "price_unit": "set",
+      "frequency_score": 8, "health_score": 3, "comfort_score": 6, "lifecycle_score": 7, "energy_score": 1, "replacement_difficulty_score": 5, "price_flexibility_score": 7,
+      "optional": false, "removable": true, "description": "居住人数、在家吃饭频率和户型共同决定座位规模。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-005", "code": "coffee_table", "name": "茶几", "category": "家具", "subcategory": "客厅家具", "active": true,
+      "required_level": "optional", "installation_type": "none", "room_types": ["living_room"],
+      "quantity_rule": {"strategy": "one_if_living_room_and_space_allows", "subtract_owned": true, "specification": "小户型优先边几或可移动小茶几"},
+      "minimum_quantity": 0, "maximum_quantity": 2, "base_min_price": 400, "base_recommended_price": 1000, "base_max_price": 3000, "price_unit": "item",
+      "frequency_score": 4, "health_score": 1, "comfort_score": 4, "lifecycle_score": 5, "energy_score": 1, "replacement_difficulty_score": 2, "price_flexibility_score": 9,
+      "optional": true, "removable": true, "description": "非入住必需，小户型或低预算可直接排除。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-006", "code": "desk", "name": "书桌", "category": "家具", "subcategory": "学习办公", "active": true,
+      "required_level": "recommended", "installation_type": "simple", "room_types": ["study", "bedroom", "child_room"],
+      "quantity_rule": {"strategy": "one_per_study_or_school_age_child", "subtract_owned": true, "specification": "成人办公建议120cm以上，儿童按身高与成长周期选择"},
+      "minimum_quantity": 0, "maximum_quantity": 6, "base_min_price": 600, "base_recommended_price": 1600, "base_max_price": 4500, "price_unit": "item",
+      "frequency_score": 7, "health_score": 5, "comfort_score": 6, "lifecycle_score": 6, "energy_score": 1, "replacement_difficulty_score": 3, "price_flexibility_score": 7,
+      "optional": false, "removable": true, "description": "依据书房、儿童与办公需求推断；当前输入模型尚缺远程办公字段。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-007", "code": "desk_chair", "name": "书桌椅", "category": "家具", "subcategory": "学习办公", "active": true,
+      "required_level": "recommended", "installation_type": "simple", "room_types": ["study", "bedroom", "child_room"],
+      "quantity_rule": {"strategy": "one_per_allocated_desk", "subtract_owned": true, "specification": "高频使用优先可调节与腰背支撑"},
+      "minimum_quantity": 0, "maximum_quantity": 6, "base_min_price": 500, "base_recommended_price": 1500, "base_max_price": 5000, "price_unit": "item",
+      "frequency_score": 7, "health_score": 7, "comfort_score": 8, "lifecycle_score": 6, "energy_score": 1, "replacement_difficulty_score": 3, "price_flexibility_score": 7,
+      "optional": false, "removable": true, "description": "数量跟随书桌，高频办公学习时提高人体工学优先级。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-008", "code": "bedside_table", "name": "床头柜", "category": "家具", "subcategory": "卧室家具", "active": true,
+      "required_level": "optional", "installation_type": "none", "room_types": ["master_bedroom", "bedroom"],
+      "quantity_rule": {"strategy": "zero_to_two_per_double_bed", "subtract_owned": true, "specification": "按床两侧通道宽度决定0/1/2个"},
+      "minimum_quantity": 0, "maximum_quantity": 12, "base_min_price": 250, "base_recommended_price": 600, "base_max_price": 1500, "price_unit": "item",
+      "frequency_score": 5, "health_score": 1, "comfort_score": 5, "lifecycle_score": 5, "energy_score": 1, "replacement_difficulty_score": 2, "price_flexibility_score": 9,
+      "optional": true, "removable": true, "description": "不影响基本入住，空间或预算不足时优先减少。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-009", "code": "freestanding_wardrobe", "name": "成品衣柜", "category": "家具", "subcategory": "收纳家具", "active": true,
+      "required_level": "recommended", "installation_type": "simple", "room_types": ["master_bedroom", "bedroom", "child_room"],
+      "quantity_rule": {"strategy": "storage_units_by_residents_and_bedrooms", "subtract_owned": true, "specification": "按人数与收纳需求选择宽度，禁止替代定制柜体报价"},
+      "minimum_quantity": 0, "maximum_quantity": 8, "base_min_price": 1200, "base_recommended_price": 3000, "base_max_price": 7000, "price_unit": "item",
+      "frequency_score": 8, "health_score": 3, "comfort_score": 6, "lifecycle_score": 7, "energy_score": 1, "replacement_difficulty_score": 6, "price_flexibility_score": 7,
+      "optional": false, "removable": true, "description": "仅包含可移动成品衣柜，不包含全屋定制柜体。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-010", "code": "shoe_cabinet", "name": "鞋柜", "category": "家具", "subcategory": "收纳家具", "active": true,
+      "required_level": "recommended", "installation_type": "simple", "room_types": ["entrance"],
+      "quantity_rule": {"strategy": "one_per_entrance", "subtract_owned": true, "specification": "按常住人数估算鞋位，优先成品柜"},
+      "minimum_quantity": 0, "maximum_quantity": 2, "base_min_price": 500, "base_recommended_price": 1200, "base_max_price": 3500, "price_unit": "item",
+      "frequency_score": 8, "health_score": 2, "comfort_score": 6, "lifecycle_score": 6, "energy_score": 1, "replacement_difficulty_score": 3, "price_flexibility_score": 8,
+      "optional": false, "removable": true, "description": "解决基础入户收纳，固定玄关柜不在 V1 范围。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-011", "code": "children_furniture", "name": "儿童家具", "category": "家具", "subcategory": "儿童家具", "active": true,
+      "required_level": "recommended", "installation_type": "simple", "room_types": ["child_room", "bedroom"],
+      "quantity_rule": {"strategy": "package_per_child_room", "subtract_owned": true, "specification": "按儿童年龄生成安全圆角、成长型规格标签"},
+      "minimum_quantity": 0, "maximum_quantity": 4, "base_min_price": 1500, "base_recommended_price": 4000, "base_max_price": 9000, "price_unit": "package",
+      "frequency_score": 8, "health_score": 8, "comfort_score": 7, "lifecycle_score": 6, "energy_score": 1, "replacement_difficulty_score": 5, "price_flexibility_score": 6,
+      "optional": false, "removable": true, "description": "仅在有儿童时生成，需强调安全、环保和成长适配。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-012", "code": "freestanding_storage", "name": "独立收纳家具", "category": "家具", "subcategory": "收纳家具", "active": true,
+      "required_level": "optional", "installation_type": "none", "room_types": ["living_room", "bedroom", "study", "balcony", "entrance"],
+      "quantity_rule": {"strategy": "units_by_storage_demand_and_area", "subtract_owned": true, "specification": "优先可移动斗柜、置物架和收纳柜"},
+      "minimum_quantity": 0, "maximum_quantity": 8, "base_min_price": 300, "base_recommended_price": 1000, "base_max_price": 3000, "price_unit": "item",
+      "frequency_score": 6, "health_score": 2, "comfort_score": 6, "lifecycle_score": 5, "energy_score": 1, "replacement_difficulty_score": 2, "price_flexibility_score": 9,
+      "optional": true, "removable": true, "description": "高收纳需求时增加，低预算可减少数量或延后。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-013", "code": "split_air_conditioner", "name": "普通分体空调", "category": "家电", "subcategory": "环境电器", "active": true,
+      "required_level": "recommended", "installation_type": "professional", "room_types": ["living_room", "master_bedroom", "bedroom", "child_room", "study"],
+      "quantity_rule": {"strategy": "one_per_frequently_used_conditioned_room", "subtract_owned": true, "specification": "按房间面积输出1匹/1.5匹/2匹及变频标签"},
+      "minimum_quantity": 0, "maximum_quantity": 10, "base_min_price": 2200, "base_recommended_price": 3500, "base_max_price": 6500, "price_unit": "room",
+      "frequency_score": 8, "health_score": 5, "comfort_score": 10, "lifecycle_score": 8, "energy_score": 9, "replacement_difficulty_score": 8, "price_flexibility_score": 5,
+      "optional": false, "removable": true, "description": "仅普通分体机；中央空调、打孔改造和复杂高空安装另行评估。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-014", "code": "refrigerator", "name": "冰箱", "category": "家电", "subcategory": "厨房家电", "active": true,
+      "required_level": "essential", "installation_type": "none", "room_types": ["kitchen", "dining_room"],
+      "quantity_rule": {"strategy": "one_per_household", "subtract_owned": true, "specification": "1人200-300L；2-3人300-450L；4人以上450L+，做饭频率上调"},
+      "minimum_quantity": 0, "maximum_quantity": 2, "base_min_price": 1800, "base_recommended_price": 4000, "base_max_price": 9000, "price_unit": "item",
+      "frequency_score": 10, "health_score": 7, "comfort_score": 8, "lifecycle_score": 8, "energy_score": 9, "replacement_difficulty_score": 7, "price_flexibility_score": 5,
+      "optional": false, "removable": true, "description": "容量由人数、做饭频率和收纳需求共同推断。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-015", "code": "washing_machine", "name": "洗衣机", "category": "家电", "subcategory": "清洁家电", "active": true,
+      "required_level": "essential", "installation_type": "simple", "room_types": ["balcony", "bathroom", "other"],
+      "quantity_rule": {"strategy": "one_per_household", "subtract_owned": true, "specification": "1-2人8-10kg；3人以上10-12kg；儿童家庭强调除菌标签"},
+      "minimum_quantity": 0, "maximum_quantity": 2, "base_min_price": 1600, "base_recommended_price": 3200, "base_max_price": 7000, "price_unit": "item",
+      "frequency_score": 10, "health_score": 7, "comfort_score": 8, "lifecycle_score": 8, "energy_score": 8, "replacement_difficulty_score": 7, "price_flexibility_score": 5,
+      "optional": false, "removable": true, "description": "已有并继续使用时预算必须为0；容量随人数与儿童情况调整。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-016", "code": "dryer", "name": "烘干机", "category": "家电", "subcategory": "清洁家电", "active": true,
+      "required_level": "optional", "installation_type": "simple", "room_types": ["balcony", "bathroom", "other"],
+      "quantity_rule": {"strategy": "one_if_selected_or_high_drying_need", "subtract_owned": true, "specification": "容量与洗衣机匹配，优先热泵式能效标签"},
+      "minimum_quantity": 0, "maximum_quantity": 1, "base_min_price": 2500, "base_recommended_price": 4500, "base_max_price": 9000, "price_unit": "item",
+      "frequency_score": 6, "health_score": 5, "comfort_score": 8, "lifecycle_score": 7, "energy_score": 7, "replacement_difficulty_score": 5, "price_flexibility_score": 7,
+      "optional": true, "removable": true, "description": "需要新增晾晒条件/烘干需求字段后才能稳定自动判断。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-017", "code": "television", "name": "电视", "category": "家电", "subcategory": "影音家电", "active": true,
+      "required_level": "optional", "installation_type": "simple", "room_types": ["living_room", "master_bedroom"],
+      "quantity_rule": {"strategy": "one_if_entertainment_not_low_and_not_excluded", "subtract_owned": true, "specification": "按观看距离输出55/65/75英寸标签"},
+      "minimum_quantity": 0, "maximum_quantity": 3, "base_min_price": 1800, "base_recommended_price": 3500, "base_max_price": 9000, "price_unit": "item",
+      "frequency_score": 5, "health_score": 1, "comfort_score": 6, "lifecycle_score": 6, "energy_score": 5, "replacement_difficulty_score": 3, "price_flexibility_score": 9,
+      "optional": true, "removable": true, "description": "用户明确不看电视或 exclude 时预算严格为0。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-018", "code": "robot_vacuum", "name": "扫地机器人", "category": "家电", "subcategory": "清洁家电", "active": true,
+      "required_level": "optional", "installation_type": "none", "room_types": ["living_room", "other"],
+      "quantity_rule": {"strategy": "one_if_area_and_budget_allow", "subtract_owned": true, "specification": "按面积与障碍情况输出基础扫拖/自清洁标签"},
+      "minimum_quantity": 0, "maximum_quantity": 1, "base_min_price": 1200, "base_recommended_price": 2800, "base_max_price": 6000, "price_unit": "item",
+      "frequency_score": 5, "health_score": 4, "comfort_score": 7, "lifecycle_score": 5, "energy_score": 4, "replacement_difficulty_score": 2, "price_flexibility_score": 9,
+      "optional": true, "removable": true, "description": "低预算时优先移除，不影响基础入住。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-019", "code": "water_purifier", "name": "净水器", "category": "家电", "subcategory": "厨房家电", "active": true,
+      "required_level": "recommended", "installation_type": "professional", "room_types": ["kitchen"],
+      "quantity_rule": {"strategy": "one_if_cooking_often_or_health_priority", "subtract_owned": true, "specification": "输出通量、滤芯年成本与安装条件标签"},
+      "minimum_quantity": 0, "maximum_quantity": 1, "base_min_price": 1200, "base_recommended_price": 2500, "base_max_price": 5500, "price_unit": "item",
+      "frequency_score": 8, "health_score": 9, "comfort_score": 6, "lifecycle_score": 6, "energy_score": 3, "replacement_difficulty_score": 5, "price_flexibility_score": 7,
+      "optional": false, "removable": true, "description": "需确认水路和台下空间；安装与后续滤芯服务成本分开说明。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-020", "code": "freestanding_dishwasher", "name": "独立式洗碗机", "category": "家电", "subcategory": "厨房家电", "active": true,
+      "required_level": "optional", "installation_type": "professional", "room_types": ["kitchen"],
+      "quantity_rule": {"strategy": "one_if_daily_cooking_and_selected", "subtract_owned": true, "specification": "按人数输出8套/12套+容量并检查独立摆放与上下水"},
+      "minimum_quantity": 0, "maximum_quantity": 1, "base_min_price": 2200, "base_recommended_price": 4000, "base_max_price": 7500, "price_unit": "item",
+      "frequency_score": 6, "health_score": 5, "comfort_score": 8, "lifecycle_score": 7, "energy_score": 6, "replacement_difficulty_score": 6, "price_flexibility_score": 8,
+      "optional": true, "removable": true, "description": "仅独立式；需要改柜或强依赖现场尺寸的嵌入式机型不纳入。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-021", "code": "range_hood", "name": "普通油烟机", "category": "家电", "subcategory": "厨房家电", "active": true,
+      "required_level": "essential", "installation_type": "professional", "room_types": ["kitchen"],
+      "quantity_rule": {"strategy": "one_if_kitchen_and_cooking", "subtract_owned": true, "specification": "按做饭频率输出基础/大风量标签，排烟条件需现场确认"},
+      "minimum_quantity": 0, "maximum_quantity": 1, "base_min_price": 1200, "base_recommended_price": 2500, "base_max_price": 5000, "price_unit": "item",
+      "frequency_score": 9, "health_score": 9, "comfort_score": 7, "lifecycle_score": 8, "energy_score": 6, "replacement_difficulty_score": 7, "price_flexibility_score": 5,
+      "optional": false, "removable": true, "description": "普通成品烟机；复杂烟道改造不计入采购预算。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-022", "code": "gas_stove", "name": "普通燃气灶", "category": "家电", "subcategory": "厨房家电", "active": true,
+      "required_level": "essential", "installation_type": "professional", "room_types": ["kitchen"],
+      "quantity_rule": {"strategy": "one_if_gas_cooking", "subtract_owned": true, "specification": "基础双眼灶，气源与开孔尺寸必须在购买前确认"},
+      "minimum_quantity": 0, "maximum_quantity": 1, "base_min_price": 700, "base_recommended_price": 1500, "base_max_price": 3500, "price_unit": "item",
+      "frequency_score": 9, "health_score": 8, "comfort_score": 6, "lifecycle_score": 8, "energy_score": 7, "replacement_difficulty_score": 7, "price_flexibility_score": 6,
+      "optional": false, "removable": true, "description": "如住宅无燃气或用户选择电磁烹饪，必须排除。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-023", "code": "water_heater", "name": "普通热水器", "category": "家电", "subcategory": "卫浴家电", "active": true,
+      "required_level": "essential", "installation_type": "professional", "room_types": ["bathroom", "kitchen", "balcony"],
+      "quantity_rule": {"strategy": "one_per_independent_hot_water_system", "subtract_owned": true, "specification": "按人数输出容量/升数标签，能源类型和安装条件需确认"},
+      "minimum_quantity": 0, "maximum_quantity": 2, "base_min_price": 1500, "base_recommended_price": 3000, "base_max_price": 6500, "price_unit": "item",
+      "frequency_score": 10, "health_score": 8, "comfort_score": 10, "lifecycle_score": 8, "energy_score": 9, "replacement_difficulty_score": 8, "price_flexibility_score": 4,
+      "optional": false, "removable": true, "description": "不包含中央热水和需重大改造的固定系统。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-024", "code": "small_appliance_package", "name": "小家电基础包", "category": "家电", "subcategory": "小家电", "active": true,
+      "required_level": "recommended", "installation_type": "none", "room_types": ["kitchen", "living_room"],
+      "quantity_rule": {"strategy": "one_package_per_household", "subtract_owned": true, "specification": "默认电饭煲、烧水壶与基础清洁电器，按做饭频率调整"},
+      "minimum_quantity": 0, "maximum_quantity": 1, "base_min_price": 800, "base_recommended_price": 2000, "base_max_price": 5000, "price_unit": "package",
+      "frequency_score": 8, "health_score": 4, "comfort_score": 7, "lifecycle_score": 5, "energy_score": 6, "replacement_difficulty_score": 2, "price_flexibility_score": 8,
+      "optional": false, "removable": true, "description": "使用基础包避免把多个低价小家电拆成大量规则项。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-025", "code": "curtains", "name": "窗帘", "category": "软装及入住", "subcategory": "窗饰", "active": true,
+      "required_level": "essential", "installation_type": "professional", "room_types": ["living_room", "master_bedroom", "bedroom", "child_room", "study"],
+      "quantity_rule": {"strategy": "one_set_per_external_window_room", "subtract_owned": true, "specification": "卧室按睡眠需求输出遮光等级，客厅输出隐私与透光标签"},
+      "minimum_quantity": 0, "maximum_quantity": 12, "base_min_price": 500, "base_recommended_price": 1200, "base_max_price": 3000, "price_unit": "room",
+      "frequency_score": 9, "health_score": 5, "comfort_score": 8, "lifecycle_score": 6, "energy_score": 6, "replacement_difficulty_score": 5, "price_flexibility_score": 7,
+      "optional": false, "removable": true, "description": "按房间数量与遮光需求计算，复杂电动轨道另行评估。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-026", "code": "lighting_fixtures", "name": "灯具", "category": "软装及入住", "subcategory": "照明", "active": true,
+      "required_level": "essential", "installation_type": "professional", "room_types": ["living_room", "master_bedroom", "bedroom", "child_room", "study", "dining_room", "kitchen", "bathroom", "balcony", "entrance"],
+      "quantity_rule": {"strategy": "one_basic_fixture_set_per_room", "subtract_owned": true, "specification": "输出基础照明、色温与显色指数标签，不含吊顶与线路施工"},
+      "minimum_quantity": 0, "maximum_quantity": 20, "base_min_price": 250, "base_recommended_price": 700, "base_max_price": 2000, "price_unit": "room",
+      "frequency_score": 10, "health_score": 7, "comfort_score": 8, "lifecycle_score": 7, "energy_score": 8, "replacement_difficulty_score": 5, "price_flexibility_score": 6,
+      "optional": false, "removable": true, "description": "只计算成品灯具与简单安装，不计算布线、吊顶或开槽。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-027", "code": "bedding", "name": "床品", "category": "软装及入住", "subcategory": "卧室用品", "active": true,
+      "required_level": "essential", "installation_type": "none", "room_types": ["master_bedroom", "bedroom", "child_room"],
+      "quantity_rule": {"strategy": "one_to_two_sets_per_active_bed", "subtract_owned": true, "specification": "按床尺寸与人数生成基础套数，睡眠需求影响面料等级"},
+      "minimum_quantity": 0, "maximum_quantity": 16, "base_min_price": 400, "base_recommended_price": 1000, "base_max_price": 2500, "price_unit": "set",
+      "frequency_score": 10, "health_score": 8, "comfort_score": 9, "lifecycle_score": 4, "energy_score": 1, "replacement_difficulty_score": 2, "price_flexibility_score": 7,
+      "optional": false, "removable": true, "description": "按有效床位配置，已有可继续使用床品时扣减。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-028", "code": "rug", "name": "地毯", "category": "软装及入住", "subcategory": "装饰织物", "active": true,
+      "required_level": "optional", "installation_type": "none", "room_types": ["living_room", "master_bedroom", "child_room"],
+      "quantity_rule": {"strategy": "one_if_appearance_or_comfort_high", "subtract_owned": true, "specification": "按空间尺寸生成小/中/大号标签，有儿童时强调易清洁"},
+      "minimum_quantity": 0, "maximum_quantity": 3, "base_min_price": 300, "base_recommended_price": 1000, "base_max_price": 3500, "price_unit": "item",
+      "frequency_score": 3, "health_score": 2, "comfort_score": 5, "lifecycle_score": 4, "energy_score": 2, "replacement_difficulty_score": 1, "price_flexibility_score": 10,
+      "optional": true, "removable": true, "description": "装饰性强，低预算时优先移除。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-029", "code": "wall_art", "name": "装饰画", "category": "软装及入住", "subcategory": "装饰", "active": true,
+      "required_level": "optional", "installation_type": "simple", "room_types": ["living_room", "master_bedroom", "dining_room", "study"],
+      "quantity_rule": {"strategy": "sets_by_appearance_demand", "subtract_owned": true, "specification": "输出基础组合数量，不含墙体改造"},
+      "minimum_quantity": 0, "maximum_quantity": 6, "base_min_price": 150, "base_recommended_price": 500, "base_max_price": 1800, "price_unit": "set",
+      "frequency_score": 2, "health_score": 1, "comfort_score": 3, "lifecycle_score": 3, "energy_score": 1, "replacement_difficulty_score": 1, "price_flexibility_score": 10,
+      "optional": true, "removable": true, "description": "纯装饰项目，预算紧张时第一批移除。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-030", "code": "cushions", "name": "靠垫", "category": "软装及入住", "subcategory": "装饰织物", "active": true,
+      "required_level": "optional", "installation_type": "none", "room_types": ["living_room", "master_bedroom"],
+      "quantity_rule": {"strategy": "two_to_four_if_sofa_or_bed", "subtract_owned": true, "specification": "按沙发与床数量生成基础组合"},
+      "minimum_quantity": 0, "maximum_quantity": 12, "base_min_price": 80, "base_recommended_price": 180, "base_max_price": 500, "price_unit": "item",
+      "frequency_score": 3, "health_score": 1, "comfort_score": 4, "lifecycle_score": 3, "energy_score": 1, "replacement_difficulty_score": 1, "price_flexibility_score": 10,
+      "optional": true, "removable": true, "description": "可随时补购，低预算时延后。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-031", "code": "plants", "name": "绿植", "category": "软装及入住", "subcategory": "装饰", "active": true,
+      "required_level": "optional", "installation_type": "none", "room_types": ["living_room", "balcony", "study"],
+      "quantity_rule": {"strategy": "units_by_appearance_demand", "subtract_owned": true, "specification": "按空间采光输出易养护小/中型组合"},
+      "minimum_quantity": 0, "maximum_quantity": 10, "base_min_price": 80, "base_recommended_price": 250, "base_max_price": 800, "price_unit": "item",
+      "frequency_score": 2, "health_score": 2, "comfort_score": 4, "lifecycle_score": 2, "energy_score": 1, "replacement_difficulty_score": 1, "price_flexibility_score": 10,
+      "optional": true, "removable": true, "description": "低频装饰项目，必须在预算不足时优先移除。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-032", "code": "move_in_storage_supplies", "name": "入住收纳用品", "category": "软装及入住", "subcategory": "入住用品", "active": true,
+      "required_level": "recommended", "installation_type": "none", "room_types": ["kitchen", "bathroom", "bedroom", "entrance", "balcony"],
+      "quantity_rule": {"strategy": "one_package_scaled_by_residents_and_storage_demand", "subtract_owned": true, "specification": "衣架、收纳盒、厨卫置物与清洁收纳基础包"},
+      "minimum_quantity": 0, "maximum_quantity": 1, "base_min_price": 800, "base_recommended_price": 2000, "base_max_price": 5000, "price_unit": "package",
+      "frequency_score": 8, "health_score": 3, "comfort_score": 7, "lifecycle_score": 4, "energy_score": 1, "replacement_difficulty_score": 2, "price_flexibility_score": 8,
+      "optional": false, "removable": true, "description": "按人数和收纳需求缩放基础包，而非逐件列出低价用品。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-033", "code": "smart_lock", "name": "智能门锁", "category": "智能设备", "subcategory": "安防", "active": true,
+      "required_level": "recommended", "installation_type": "professional", "room_types": ["entrance"],
+      "quantity_rule": {"strategy": "one_per_main_entrance_if_compatible", "subtract_owned": true, "specification": "购买前确认门体、锁体与开向兼容"},
+      "minimum_quantity": 0, "maximum_quantity": 2, "base_min_price": 800, "base_recommended_price": 1800, "base_max_price": 4000, "price_unit": "item",
+      "frequency_score": 9, "health_score": 7, "comfort_score": 8, "lifecycle_score": 7, "energy_score": 4, "replacement_difficulty_score": 7, "price_flexibility_score": 6,
+      "optional": false, "removable": true, "description": "涉及门体兼容和安装服务，预算中必须单独说明安装风险。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-034", "code": "router", "name": "路由器", "category": "智能设备", "subcategory": "网络", "active": true,
+      "required_level": "essential", "installation_type": "simple", "room_types": ["living_room", "study", "other"],
+      "quantity_rule": {"strategy": "nodes_by_area_and_room_count", "subtract_owned": true, "specification": "小户型单路由，大户型输出1-3节点Mesh标签"},
+      "minimum_quantity": 0, "maximum_quantity": 4, "base_min_price": 300, "base_recommended_price": 800, "base_max_price": 2200, "price_unit": "item",
+      "frequency_score": 10, "health_score": 2, "comfort_score": 9, "lifecycle_score": 6, "energy_score": 4, "replacement_difficulty_score": 3, "price_flexibility_score": 7,
+      "optional": false, "removable": true, "description": "按面积和房间数推断节点，不包含弱电布线施工。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-035", "code": "smart_speaker", "name": "智能音箱", "category": "智能设备", "subcategory": "交互终端", "active": true,
+      "required_level": "optional", "installation_type": "none", "room_types": ["living_room", "bedroom", "study"],
+      "quantity_rule": {"strategy": "one_if_smart_home_high", "subtract_owned": true, "specification": "基础语音入口，不默认多房间铺设"},
+      "minimum_quantity": 0, "maximum_quantity": 3, "base_min_price": 200, "base_recommended_price": 500, "base_max_price": 1500, "price_unit": "item",
+      "frequency_score": 3, "health_score": 1, "comfort_score": 5, "lifecycle_score": 4, "energy_score": 2, "replacement_difficulty_score": 1, "price_flexibility_score": 10,
+      "optional": true, "removable": true, "description": "非必要智能设备，低预算时优先移除。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-036", "code": "smart_lighting_devices", "name": "智能照明设备", "category": "智能设备", "subcategory": "智能照明", "active": true,
+      "required_level": "optional", "installation_type": "simple", "room_types": ["living_room", "master_bedroom", "bedroom", "study"],
+      "quantity_rule": {"strategy": "devices_by_smart_demand_and_compatible_rooms", "subtract_owned": true, "specification": "仅智能灯泡、遥控器和无线开关，不含线路改造"},
+      "minimum_quantity": 0, "maximum_quantity": 12, "base_min_price": 100, "base_recommended_price": 300, "base_max_price": 800, "price_unit": "item",
+      "frequency_score": 5, "health_score": 2, "comfort_score": 7, "lifecycle_score": 4, "energy_score": 6, "replacement_difficulty_score": 2, "price_flexibility_score": 10,
+      "optional": true, "removable": true, "description": "只允许无需装修改造的智能照明设备。", "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-037", "code": "basic_sensors", "name": "基础传感器", "category": "智能设备", "subcategory": "传感器", "active": true,
+      "required_level": "optional", "installation_type": "simple", "room_types": ["entrance", "living_room", "kitchen", "bathroom", "balcony"],
+      "quantity_rule": {"strategy": "package_if_smart_home_high", "subtract_owned": true, "specification": "门窗、人体和漏水传感器基础包，按房间风险点分配"},
+      "minimum_quantity": 0, "maximum_quantity": 1, "base_min_price": 300, "base_recommended_price": 800, "base_max_price": 2200, "price_unit": "package",
+      "frequency_score": 4, "health_score": 6, "comfort_score": 5, "lifecycle_score": 4, "energy_score": 4, "replacement_difficulty_score": 2, "price_flexibility_score": 9,
+      "optional": true, "removable": true, "description": "不影响基本入住；低预算或低智能需求时移除。", "rule_version": "home_setup_v1_draft_1"
+    }
+  ]
+}

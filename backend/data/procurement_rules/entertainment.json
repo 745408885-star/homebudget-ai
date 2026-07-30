@@ -1,0 +1,41 @@
+{
+  "module": "entertainment",
+  "items": [
+    {
+      "id": "v2-item-017",
+      "code": "television",
+      "name": "电视",
+      "category": "家电",
+      "subcategory": "影音家电",
+      "active": true,
+      "required_level": "optional",
+      "installation_type": "simple",
+      "room_types": [
+        "living_room",
+        "master_bedroom"
+      ],
+      "quantity_rule": {
+        "strategy": "one_if_entertainment_not_low_and_not_excluded",
+        "subtract_owned": true,
+        "specification": "按观看距离输出55/65/75英寸标签"
+      },
+      "minimum_quantity": 0,
+      "maximum_quantity": 3,
+      "base_min_price": 1800,
+      "base_recommended_price": 3500,
+      "base_max_price": 9000,
+      "price_unit": "item",
+      "frequency_score": 5,
+      "health_score": 1,
+      "comfort_score": 6,
+      "lifecycle_score": 6,
+      "energy_score": 5,
+      "replacement_difficulty_score": 3,
+      "price_flexibility_score": 9,
+      "optional": true,
+      "removable": true,
+      "description": "用户明确不看电视或 exclude 时预算严格为0。",
+      "rule_version": "home_setup_v1_draft_1"
+    }
+  ]
+}

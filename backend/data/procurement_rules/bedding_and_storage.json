@@ -1,0 +1,81 @@
+{
+  "module": "bedding_and_storage",
+  "items": [
+    {
+      "id": "v2-item-027",
+      "code": "bedding",
+      "name": "床品",
+      "category": "软装及入住",
+      "subcategory": "卧室用品",
+      "active": true,
+      "required_level": "essential",
+      "installation_type": "none",
+      "room_types": [
+        "master_bedroom",
+        "bedroom",
+        "child_room"
+      ],
+      "quantity_rule": {
+        "strategy": "one_to_two_sets_per_active_bed",
+        "subtract_owned": true,
+        "specification": "按床尺寸与人数生成基础套数，睡眠需求影响面料等级"
+      },
+      "minimum_quantity": 0,
+      "maximum_quantity": 16,
+      "base_min_price": 400,
+      "base_recommended_price": 1000,
+      "base_max_price": 2500,
+      "price_unit": "set",
+      "frequency_score": 10,
+      "health_score": 8,
+      "comfort_score": 9,
+      "lifecycle_score": 4,
+      "energy_score": 1,
+      "replacement_difficulty_score": 2,
+      "price_flexibility_score": 7,
+      "optional": false,
+      "removable": true,
+      "description": "按有效床位配置，已有可继续使用床品时扣减。",
+      "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-032",
+      "code": "move_in_storage_supplies",
+      "name": "入住收纳用品",
+      "category": "软装及入住",
+      "subcategory": "入住用品",
+      "active": true,
+      "required_level": "recommended",
+      "installation_type": "none",
+      "room_types": [
+        "kitchen",
+        "bathroom",
+        "bedroom",
+        "entrance",
+        "balcony"
+      ],
+      "quantity_rule": {
+        "strategy": "one_package_scaled_by_residents_and_storage_demand",
+        "subtract_owned": true,
+        "specification": "衣架、收纳盒、厨卫置物与清洁收纳基础包"
+      },
+      "minimum_quantity": 0,
+      "maximum_quantity": 1,
+      "base_min_price": 800,
+      "base_recommended_price": 2000,
+      "base_max_price": 5000,
+      "price_unit": "package",
+      "frequency_score": 8,
+      "health_score": 3,
+      "comfort_score": 7,
+      "lifecycle_score": 4,
+      "energy_score": 1,
+      "replacement_difficulty_score": 2,
+      "price_flexibility_score": 8,
+      "optional": false,
+      "removable": true,
+      "description": "按人数和收纳需求缩放基础包，而非逐件列出低价用品。",
+      "rule_version": "home_setup_v1_draft_1"
+    }
+  ]
+}

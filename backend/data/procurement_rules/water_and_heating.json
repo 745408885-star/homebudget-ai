@@ -1,0 +1,77 @@
+{
+  "module": "water_and_heating",
+  "items": [
+    {
+      "id": "v2-item-019",
+      "code": "water_purifier",
+      "name": "净水器",
+      "category": "家电",
+      "subcategory": "厨房家电",
+      "active": true,
+      "required_level": "recommended",
+      "installation_type": "professional",
+      "room_types": [
+        "kitchen"
+      ],
+      "quantity_rule": {
+        "strategy": "one_if_cooking_often_or_health_priority",
+        "subtract_owned": true,
+        "specification": "输出通量、滤芯年成本与安装条件标签"
+      },
+      "minimum_quantity": 0,
+      "maximum_quantity": 1,
+      "base_min_price": 1200,
+      "base_recommended_price": 2500,
+      "base_max_price": 5500,
+      "price_unit": "item",
+      "frequency_score": 8,
+      "health_score": 9,
+      "comfort_score": 6,
+      "lifecycle_score": 6,
+      "energy_score": 3,
+      "replacement_difficulty_score": 5,
+      "price_flexibility_score": 7,
+      "optional": false,
+      "removable": true,
+      "description": "需确认水路和台下空间；安装与后续滤芯服务成本分开说明。",
+      "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-023",
+      "code": "water_heater",
+      "name": "普通热水器",
+      "category": "家电",
+      "subcategory": "卫浴家电",
+      "active": true,
+      "required_level": "essential",
+      "installation_type": "professional",
+      "room_types": [
+        "bathroom",
+        "kitchen",
+        "balcony"
+      ],
+      "quantity_rule": {
+        "strategy": "one_per_independent_hot_water_system",
+        "subtract_owned": true,
+        "specification": "按人数输出容量/升数标签，能源类型和安装条件需确认"
+      },
+      "minimum_quantity": 0,
+      "maximum_quantity": 2,
+      "base_min_price": 1500,
+      "base_recommended_price": 3000,
+      "base_max_price": 6500,
+      "price_unit": "item",
+      "frequency_score": 10,
+      "health_score": 8,
+      "comfort_score": 10,
+      "lifecycle_score": 8,
+      "energy_score": 9,
+      "replacement_difficulty_score": 8,
+      "price_flexibility_score": 4,
+      "optional": false,
+      "removable": true,
+      "description": "不包含中央热水和需重大改造的固定系统。",
+      "rule_version": "home_setup_v1_draft_1"
+    }
+  ]
+}

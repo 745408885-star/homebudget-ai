@@ -1,0 +1,79 @@
+{
+  "module": "laundry",
+  "items": [
+    {
+      "id": "v2-item-015",
+      "code": "washing_machine",
+      "name": "洗衣机",
+      "category": "家电",
+      "subcategory": "清洁家电",
+      "active": true,
+      "required_level": "essential",
+      "installation_type": "simple",
+      "room_types": [
+        "balcony",
+        "bathroom",
+        "other"
+      ],
+      "quantity_rule": {
+        "strategy": "one_per_household",
+        "subtract_owned": true,
+        "specification": "1-2人8-10kg；3人以上10-12kg；儿童家庭强调除菌标签"
+      },
+      "minimum_quantity": 0,
+      "maximum_quantity": 2,
+      "base_min_price": 1600,
+      "base_recommended_price": 3200,
+      "base_max_price": 7000,
+      "price_unit": "item",
+      "frequency_score": 10,
+      "health_score": 7,
+      "comfort_score": 8,
+      "lifecycle_score": 8,
+      "energy_score": 8,
+      "replacement_difficulty_score": 7,
+      "price_flexibility_score": 5,
+      "optional": false,
+      "removable": true,
+      "description": "已有并继续使用时预算必须为0；容量随人数与儿童情况调整。",
+      "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-016",
+      "code": "dryer",
+      "name": "烘干机",
+      "category": "家电",
+      "subcategory": "清洁家电",
+      "active": true,
+      "required_level": "optional",
+      "installation_type": "simple",
+      "room_types": [
+        "balcony",
+        "bathroom",
+        "other"
+      ],
+      "quantity_rule": {
+        "strategy": "one_if_selected_or_high_drying_need",
+        "subtract_owned": true,
+        "specification": "容量与洗衣机匹配，优先热泵式能效标签"
+      },
+      "minimum_quantity": 0,
+      "maximum_quantity": 1,
+      "base_min_price": 2500,
+      "base_recommended_price": 4500,
+      "base_max_price": 9000,
+      "price_unit": "item",
+      "frequency_score": 6,
+      "health_score": 5,
+      "comfort_score": 8,
+      "lifecycle_score": 7,
+      "energy_score": 7,
+      "replacement_difficulty_score": 5,
+      "price_flexibility_score": 7,
+      "optional": true,
+      "removable": true,
+      "description": "需要新增晾晒条件/烘干需求字段后才能稳定自动判断。",
+      "rule_version": "home_setup_v1_draft_1"
+    }
+  ]
+}

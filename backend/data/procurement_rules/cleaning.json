@@ -1,0 +1,41 @@
+{
+  "module": "cleaning",
+  "items": [
+    {
+      "id": "v2-item-018",
+      "code": "robot_vacuum",
+      "name": "扫地机器人",
+      "category": "家电",
+      "subcategory": "清洁家电",
+      "active": true,
+      "required_level": "optional",
+      "installation_type": "none",
+      "room_types": [
+        "living_room",
+        "other"
+      ],
+      "quantity_rule": {
+        "strategy": "one_if_area_and_budget_allow",
+        "subtract_owned": true,
+        "specification": "按面积与障碍情况输出基础扫拖/自清洁标签"
+      },
+      "minimum_quantity": 0,
+      "maximum_quantity": 1,
+      "base_min_price": 1200,
+      "base_recommended_price": 2800,
+      "base_max_price": 6000,
+      "price_unit": "item",
+      "frequency_score": 5,
+      "health_score": 4,
+      "comfort_score": 7,
+      "lifecycle_score": 5,
+      "energy_score": 4,
+      "replacement_difficulty_score": 2,
+      "price_flexibility_score": 9,
+      "optional": true,
+      "removable": true,
+      "description": "低预算时优先移除，不影响基础入住。",
+      "rule_version": "home_setup_v1_draft_1"
+    }
+  ]
+}

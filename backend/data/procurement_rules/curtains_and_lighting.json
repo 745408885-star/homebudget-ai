@@ -1,0 +1,88 @@
+{
+  "module": "curtains_and_lighting",
+  "items": [
+    {
+      "id": "v2-item-025",
+      "code": "curtains",
+      "name": "窗帘",
+      "category": "软装及入住",
+      "subcategory": "窗饰",
+      "active": true,
+      "required_level": "essential",
+      "installation_type": "professional",
+      "room_types": [
+        "living_room",
+        "master_bedroom",
+        "bedroom",
+        "child_room",
+        "study"
+      ],
+      "quantity_rule": {
+        "strategy": "one_set_per_external_window_room",
+        "subtract_owned": true,
+        "specification": "卧室按睡眠需求输出遮光等级，客厅输出隐私与透光标签"
+      },
+      "minimum_quantity": 0,
+      "maximum_quantity": 12,
+      "base_min_price": 500,
+      "base_recommended_price": 1200,
+      "base_max_price": 3000,
+      "price_unit": "room",
+      "frequency_score": 9,
+      "health_score": 5,
+      "comfort_score": 8,
+      "lifecycle_score": 6,
+      "energy_score": 6,
+      "replacement_difficulty_score": 5,
+      "price_flexibility_score": 7,
+      "optional": false,
+      "removable": true,
+      "description": "按房间数量与遮光需求计算，复杂电动轨道另行评估。",
+      "rule_version": "home_setup_v1_draft_1"
+    },
+    {
+      "id": "v2-item-026",
+      "code": "lighting_fixtures",
+      "name": "灯具",
+      "category": "软装及入住",
+      "subcategory": "照明",
+      "active": true,
+      "required_level": "essential",
+      "installation_type": "professional",
+      "room_types": [
+        "living_room",
+        "master_bedroom",
+        "bedroom",
+        "child_room",
+        "study",
+        "dining_room",
+        "kitchen",
+        "bathroom",
+        "balcony",
+        "entrance"
+      ],
+      "quantity_rule": {
+        "strategy": "one_basic_fixture_set_per_room",
+        "subtract_owned": true,
+        "specification": "输出基础照明、色温与显色指数标签，不含吊顶与线路施工"
+      },
+      "minimum_quantity": 0,
+      "maximum_quantity": 20,
+      "base_min_price": 250,
+      "base_recommended_price": 700,
+      "base_max_price": 2000,
+      "price_unit": "room",
+      "frequency_score": 10,
+      "health_score": 7,
+      "comfort_score": 8,
+      "lifecycle_score": 7,
+      "energy_score": 8,
+      "replacement_difficulty_score": 5,
+      "price_flexibility_score": 6,
+      "optional": false,
+      "removable": true,
+      "description": "只计算成品灯具与简单安装，不计算布线、吊顶或开槽。",
+      "rule_version": "home_setup_v1_draft_1"
+    }
+  ]
+}
