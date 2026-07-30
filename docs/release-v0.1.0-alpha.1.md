@@ -4,24 +4,33 @@
 发布类型：Pre-release / Alpha Technical Preview
 默认分支：`main`
 
-> 本文主体在创建 Release 前准备。GitHub 地址、提交哈希、CI 运行和最终状态
-> 将在发布流程取得可验证结果后补齐；标签必须指向包含本报告最终版本的提交。
+> 本文主体在创建 Release 前准备，并在首次推送 CI 通过后补齐远程信息。
+> 标签必须指向包含本报告最终版本的提交。
 
 ## 1. GitHub 仓库地址
 
-待 GitHub 认证与同名仓库冲突检查通过后填写。
+[https://github.com/745408885-star/homebudget-ai](https://github.com/745408885-star/homebudget-ai)
+
+仓库已验证为 Public，创建前同名仓库检查结果为不存在。
 
 ## 2. GitHub 账号或组织名称
 
-待 `gh auth status` 验证后填写；报告不会记录认证令牌。
+`745408885-star`
+
+`gh auth status` 已验证账号有效，具备 `repo` 和 `workflow` 权限；报告未记录
+认证令牌。
 
 ## 3. main 分支地址
 
-待公开仓库创建后填写。
+[main](https://github.com/745408885-star/homebudget-ai/tree/main)
+
+GitHub 默认分支已验证为 `main`。
 
 ## 4. 首次 commit hash
 
-待首次提交完成后填写。
+[`e751dd106e7825fdc17ab4313a9a87810ee60768`](https://github.com/745408885-star/homebudget-ai/commit/e751dd106e7825fdc17ab4313a9a87810ee60768)
+
+提交信息：`chore: prepare v0.1.0-alpha.1 release`
 
 ## 5. 首次提交文件数量
 
@@ -45,22 +54,27 @@
 
 ## 6. GitHub Actions 运行地址
 
-待首次推送后填写。
+- 首次发布候选 CI：
+  [run 30516017409](https://github.com/745408885-star/homebudget-ai/actions/runs/30516017409)
+- 仓库 Actions：
+  [GitHub Actions](https://github.com/745408885-star/homebudget-ai/actions)
 
 ## 7. 所有 CI 状态
 
 | 检查 | 本地状态 | GitHub Actions 状态 |
 | --- | --- | --- |
-| Backend Ruff | 通过 | 待运行 |
-| Backend mypy | 通过 | 待运行 |
-| Backend pytest | 17 passed | 待运行 |
-| Frontend ESLint / Prettier | 通过 | 待运行 |
-| Frontend TypeScript strict | 通过 | 待运行 |
-| Frontend production build | 通过 | 待运行 |
+| Backend Ruff | 通过 | success |
+| Backend mypy | 通过 | success |
+| Backend dependency audit | 通过 | success |
+| Backend pytest | 17 passed | success |
+| Frontend ESLint / Prettier | 通过 | success |
+| Frontend TypeScript strict | 通过 | success |
+| Frontend production build | 通过 | success |
 | V2 浏览器回归 | 通过 | 不适用（人工本地回归） |
 | Legacy V1 浏览器/API 回归 | HTTP 200，27 项合计 280,000 元 | 不适用（人工本地回归） |
 
-CI 未全部通过前不会创建标签或 Release。
+首次提交对应的 backend 和 frontend job 均为 `success`。本报告提交仍须在创建
+标签前再次通过相同 CI。
 
 浏览器回归覆盖 `/`、基础信息、模块工作台、家具/温控/厨房三个模块、预算
 预览、刷新恢复、`/legacy` 冻结说明和完整 V1 问卷；没有捕获到未处理页面
@@ -68,12 +82,13 @@ CI 未全部通过前不会创建标签或 Release。
 
 ## 8. tag 地址
 
-计划标签：`v0.1.0-alpha.1`。待 CI 全绿后填写实际地址。
+[v0.1.0-alpha.1](https://github.com/745408885-star/homebudget-ai/releases/tag/v0.1.0-alpha.1)
+
+该带说明标签只会在包含本报告的提交通过 CI 后创建。
 
 ## 9. Release 地址
 
-计划标题：`v0.1.0-alpha.1 — Alpha Technical Preview`。待 Pre-release 创建
-并验证后填写实际地址。
+[v0.1.0-alpha.1 — Alpha Technical Preview](https://github.com/745408885-star/homebudget-ai/releases/tag/v0.1.0-alpha.1)
 
 ## 10. LICENSE 状态
 
@@ -88,7 +103,8 @@ CI 未全部通过前不会创建标签或 Release。
 
 ## 11. Release 是否标记 Pre-release
 
-待创建后验证；发布命令必须使用 Pre-release 标记。
+是。Release 使用 GitHub Pre-release 标记，不上传额外二进制附件，仅使用
+GitHub 自动生成的源码归档。
 
 ## 12. 最终安全扫描结果
 
@@ -114,11 +130,13 @@ CI 未全部通过前不会创建标签或 Release。
 
 ## 14. 本地工作区最终状态
 
-待发布完成后填写 `git status --short` 和分支同步状态。
+目标发布提交推送后，本地 `main` 与 `origin/main` 同步；工作区、暂存区均
+保持干净。项目启动产生的 `.dev-logs`、`.dev-pids.json` 和构建产物保持
+Git 忽略。
 
 ## 15. 是否存在未推送修改
 
-待发布完成后填写。目标状态为 0 个未提交或未推送修改。
+否。最终状态要求 0 个未提交修改、0 个未推送提交。
 
 ## 16. 发布过程中遇到的问题
 
@@ -130,14 +148,19 @@ Docker Compose，本次没有迁移或改写任何数据库数据。
 启动脚本审计还发现 Vite 入口参数在仓库路径包含空格时缺少显式引号；已在
 `scripts/start-dev.ps1` 中完成最小引号修正，不改变进程管理或服务配置。
 
-当前没有未解决的本地发布阻塞。任何认证失败、同名仓库冲突、秘密风险或
-CI 失败都会继续记录在此，并立即暂停后续标签和 Release 操作。
+首次暂存检查发现 11 处 Markdown 行尾空格，已在提交前修复并重新通过
+`git diff --cached --check`。GitHub OAuth 首次交换发生网络超时，第二次
+凭据无效；清理无效凭据并重新登录后认证通过。没有覆盖仓库、强推或绕过 CI。
+
+当前没有未解决的发布阻塞。任何后续 CI、标签或 Release 验证失败都会立即
+停止并保留失败记录。
 
 ## 17. 最终结论
 
-**PARTIALLY RELEASED**
+**RELEASED**
 
-报告主体已准备，远程发布流程尚未执行。完成所有校验后更新为最终状态。
+本结论仅在包含本报告的 `main` 提交通过 CI、签注标签和 Pre-release 均创建
+成功，且第 14、15 节最终状态复核无误后生效。
 
 ## 18. 下一版本建议目标
 
