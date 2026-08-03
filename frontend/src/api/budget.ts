@@ -15,6 +15,11 @@ export class ApiError extends Error {
 }
 
 type JsonObject = Record<string, unknown>;
+export const BUDGET_REQUEST_TIMEOUT_MS = 10_000;
+
+interface CalculateBudgetOptions {
+  timeoutMs?: number;
+}
 
 function isObject(value: unknown): value is JsonObject {
   return typeof value === "object" && value !== null && !Array.isArray(value);
@@ -108,16 +113,26 @@ function readErrorMessage(body: unknown): string {
 
 export async function calculateBudget(
   input: CalculateBudgetInput,
+  options: CalculateBudgetOptions = {},
 ): Promise<BudgetResult> {
+  const controller = new AbortController();
+  const timeoutMs = options.timeoutMs ?? BUDGET_REQUEST_TIMEOUT_MS;
+  const timeout = globalThis.setTimeout(() => controller.abort(), timeoutMs);
   let response: Response;
   try {
     response = await fetch("/api/budget/calculate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(input),
+      signal: controller.signal,
     });
   } catch {
+    if (controller.signal.aborted) {
+      throw new ApiError("预算服务响应超时，请稍后重试。", 0);
+    }
     throw new ApiError("无法连接预算服务，请确认 FastAPI 后端已经启动后再试。", 0);
+  } finally {
+    globalThis.clearTimeout(timeout);
   }
 
   const body = await response.json().catch(() => null);

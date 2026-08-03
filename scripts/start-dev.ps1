@@ -87,7 +87,28 @@ Write-Host "✓ 已找到本地 .env" -ForegroundColor Green
 if (-not (Test-Path -LiteralPath $pythonPath -PathType Leaf)) {
     Stop-WithMessage "缺少 backend/.venv。请先按 README 完成后端依赖准备。"
 }
+try {
+    & $pythonPath -c "import sys; import fastapi; import uvicorn; print(sys.executable)" | Out-Null
+    if ($LASTEXITCODE -ne 0) {
+        throw "Python 解释器或后端依赖无法启动。"
+    }
+}
+catch {
+    Stop-WithMessage "检测到后端虚拟环境不存在或已经失效。请在 backend 目录重新创建 .venv 并安装项目依赖。"
+}
 Write-Host "✓ 已找到 backend/.venv" -ForegroundColor Green
+
+Push-Location $backendRoot
+try {
+    & $pythonPath -m scripts.check_database_connection
+    if ($LASTEXITCODE -ne 0) {
+        Stop-WithMessage "无法连接本地开发数据库。请检查 PostgreSQL 服务和 .env 中的 DATABASE_URL。"
+    }
+}
+finally {
+    Pop-Location
+}
+Write-Host "✓ 数据库连接检查通过" -ForegroundColor Green
 
 if (-not (Test-Path -LiteralPath (Join-Path $frontendRoot "node_modules") -PathType Container)) {
     Stop-WithMessage "缺少 frontend/node_modules。请先在 frontend 目录执行 npm install。"
