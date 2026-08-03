@@ -24,6 +24,7 @@ V2 是当前唯一产品主线；Legacy V1 已冻结并仅用于历史兼容和�
 - [开发环境与本地运行](development.md)
 - [已知限制](known-limitations.md)
 - [代码规模清单](code-size-inventory.md)
+- [Phase 6C UI 冻结期工程质量报告](pre-ui-hardening-report.md)
 
 ## 发布审计
 

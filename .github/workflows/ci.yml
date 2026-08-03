@@ -11,6 +11,24 @@ permissions:
 jobs:
   backend:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:18
+        env:
+          POSTGRES_DB: homebudget_ci_test
+          POSTGRES_USER: homebudget_test
+          POSTGRES_PASSWORD: ci-only-password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U homebudget_test -d homebudget_ci_test"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      APP_ENV: test
+      DATABASE_URL: postgresql+psycopg://pytest_guard:pytest_guard@127.0.0.1:1/homebudget_pytest_guard_test?connect_timeout=1
+      TEST_DATABASE_URL: postgresql+psycopg://homebudget_test:ci-only-password@127.0.0.1:5432/homebudget_ci_test
     defaults:
       run:
         working-directory: backend
@@ -25,16 +43,20 @@ jobs:
             backend/requirements-dev.txt
       - name: Install dependencies
         run: python -m pip install -r requirements-dev.txt
+      - name: Test database safety
+        run: python -m scripts.check_test_database_safety
       - name: Ruff lint
         run: python -m ruff check app tests scripts
       - name: Ruff format
         run: python -m ruff format --check app tests scripts
       - name: Type check
         run: python -m mypy app
+      - name: Python compile
+        run: python -m compileall -q app tests scripts
       - name: Dependency audit
-        run: python -m pip_audit -r requirements.txt
-      - name: Test
-        run: python -m pytest
+        run: python -m pip_audit -r requirements-dev.txt
+      - name: Test and coverage
+        run: python -m pytest --cov=app --cov-report=term-missing --cov-report=xml
 
   frontend:
     runs-on: ubuntu-latest
@@ -48,11 +70,38 @@ jobs:
           node-version: "22"
           cache: npm
           cache-dependency-path: frontend/package-lock.json
-      - name: Install dependencies
+      - name: Lock file consistency
         run: npm ci
-      - name: Lint
+      - name: ESLint and Prettier
         run: npm run lint
-      - name: Type check
+      - name: TypeScript strict
         run: npm run typecheck
-      - name: Build
+      - name: Dependency audit
+        run: npm audit --audit-level=high
+      - name: Test and coverage
+        run: npm run test:coverage
+      - name: Production build
         run: npm run build
+
+  repository-quality:
+    runs-on: ubuntu-latest
+    env:
+      BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Markdown naming and links
+        run: node scripts/check-docs.mjs
+      - name: Sensitive information scan
+        run: node scripts/check-secrets.mjs
+      - name: Business file size report
+        run: node scripts/check-code-size.mjs
+      - name: Legacy freeze warning
+        run: node scripts/check-legacy-changes.mjs
+      - name: PowerShell syntax
+        shell: pwsh
+        run: ./scripts/check-powershell.ps1

@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 
 import type { PlannerFormData } from "../../types/budget";
 
@@ -18,6 +18,7 @@ export function usePlannerFlow({
   const [step, setStep] = useState(1);
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const submittingRef = useRef(false);
 
   const update = <K extends keyof PlannerFormData>(
     key: K,
@@ -58,8 +59,10 @@ export function usePlannerFlow({
 
   const submit = async (event: FormEvent) => {
     event.preventDefault();
+    if (submittingRef.current) return;
     const message = validate();
     if (message) return setError(message);
+    submittingRef.current = true;
     setSubmitting(true);
     try {
       await onSubmit();
@@ -70,6 +73,7 @@ export function usePlannerFlow({
           : "网络连接失败，请稍后重试。",
       );
     } finally {
+      submittingRef.current = false;
       setSubmitting(false);
     }
   };

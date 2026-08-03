@@ -1,21 +1,31 @@
-export type BudgetMode = "ceiling" | "full_allocation";
+export const BUDGET_MODES = ["ceiling", "full_allocation"] as const;
+export type BudgetMode = (typeof BUDGET_MODES)[number];
 
-export type ItemStatus =
-  "need" | "owned" | "exclude" | "later" | "optional" | "system_recommend";
+export const ITEM_STATUSES = [
+  "need",
+  "owned",
+  "exclude",
+  "later",
+  "optional",
+  "system_recommend",
+] as const;
+export type ItemStatus = (typeof ITEM_STATUSES)[number];
 
-export type ModuleCode =
-  | "furniture"
-  | "climate"
-  | "kitchen_appliances"
-  | "laundry"
-  | "cleaning"
-  | "entertainment"
-  | "water_and_heating"
-  | "network_and_smart"
-  | "curtains_and_lighting"
-  | "bedding_and_storage"
-  | "decoration"
-  | "owned_items";
+export const MODULE_CODES = [
+  "furniture",
+  "climate",
+  "kitchen_appliances",
+  "laundry",
+  "cleaning",
+  "entertainment",
+  "water_and_heating",
+  "network_and_smart",
+  "curtains_and_lighting",
+  "bedding_and_storage",
+  "decoration",
+  "owned_items",
+] as const;
+export type ModuleCode = (typeof MODULE_CODES)[number];
 
 export type AnswerValue = string | number | boolean | string[];
 

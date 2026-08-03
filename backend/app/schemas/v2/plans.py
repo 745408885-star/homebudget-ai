@@ -104,6 +104,21 @@ class BudgetResultV2(BaseModel):
         item_total = sum(item.current_budget for item in self.items)
         if item_total != self.allocated_budget:
             raise ValueError("有效采购项目金额合计必须等于 allocated_budget")
+        zero_budget_statuses = {
+            ItemSelectionStatus.OWNED,
+            ItemSelectionStatus.EXCLUDE,
+            ItemSelectionStatus.LATER,
+        }
+        invalid_zero_budget_items = [
+            item.item_code
+            for item in self.items
+            if item.status in zero_budget_statuses and item.current_budget != 0
+        ]
+        if invalid_zero_budget_items:
+            raise ValueError(
+                "owned、exclude 和 later 项目的本期预算必须为0："
+                f"{invalid_zero_budget_items}"
+            )
         if self.budget_mode == BudgetMode.CEILING and (
             self.upgrade_budget != 0 or self.reserve_budget != 0
         ):

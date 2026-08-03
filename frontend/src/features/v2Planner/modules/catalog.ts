@@ -1,4 +1,4 @@
-import type { ModuleCode, ModuleDefinition } from "../types";
+import { MODULE_CODES, type ModuleCode, type ModuleDefinition } from "../types";
 import { beddingAndStorageDefinition } from "./beddingAndStorage/definition";
 import { cleaningDefinition } from "./cleaning/definition";
 import { climateDefinition } from "./climate/definition";
@@ -27,4 +27,4 @@ export const moduleCatalog: Record<ModuleCode, ModuleDefinition> = {
   owned_items: ownedItemsDefinition,
 };
 
-export const moduleOrder = Object.keys(moduleCatalog) as ModuleCode[];
+export const moduleOrder = MODULE_CODES;

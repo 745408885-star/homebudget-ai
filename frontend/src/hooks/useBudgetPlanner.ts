@@ -52,7 +52,11 @@ function loadSavedState(): SavedPlannerState {
       result,
     };
   } catch {
-    sessionStorage.removeItem(STORAGE_KEY);
+    try {
+      sessionStorage.removeItem(STORAGE_KEY);
+    } catch {
+      // Storage may be unavailable in privacy-restricted browser contexts.
+    }
     return fallback;
   }
 }
@@ -64,7 +68,11 @@ export function useBudgetPlanner() {
   const [result, setResult] = useState<BudgetResult | null>(savedState.result);
 
   useEffect(() => {
-    sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ view, form, result }));
+    try {
+      sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ view, form, result }));
+    } catch {
+      // Keep the current in-memory flow usable when session storage is unavailable.
+    }
   }, [view, form, result]);
 
   const goTop = () => window.scrollTo({ top: 0, behavior: "smooth" });

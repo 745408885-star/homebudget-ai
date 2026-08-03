@@ -27,7 +27,7 @@ function createModuleProgress(code: ModuleCode): ModuleProgress {
 export function createInitialV2State(): V2PlannerState {
   return {
     version: 1,
-    basic: initialBasicInfo,
+    basic: { ...initialBasicInfo },
     modules: Object.fromEntries(
       moduleOrder.map((code) => [code, createModuleProgress(code)]),
     ) as Record<ModuleCode, ModuleProgress>,

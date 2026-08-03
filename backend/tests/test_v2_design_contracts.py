@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 import pytest
 from pydantic import ValidationError
@@ -12,6 +12,8 @@ from app.models_v2 import (
     ProcurementItemRule,
     UserInputV2,
 )
+
+pytestmark = pytest.mark.unit
 
 BACKEND_ROOT = Path(__file__).resolve().parents[1]
 RULES_PATH = BACKEND_ROOT / "data" / "procurement_rules_v1.draft.json"
@@ -32,7 +34,7 @@ FORBIDDEN_HARD_FINISH_CODES = {
 
 
 def load_json(path: Path) -> dict[str, Any]:
-    return json.loads(path.read_text(encoding="utf-8"))
+    return cast(dict[str, Any], json.loads(path.read_text(encoding="utf-8")))
 
 
 def contract_result_item(current_budget: int) -> dict[str, Any]:
@@ -142,6 +144,10 @@ def test_budget_mode_c_contract_defaults_to_ceiling() -> None:
     assert user_input.reserve_budget_target == 0
 
 
+def test_budget_mode_enum_is_stable() -> None:
+    assert {mode.value for mode in BudgetMode} == {"ceiling", "full_allocation"}
+
+
 def test_ceiling_rejects_upgrade_or_reserve_preallocation() -> None:
     scenario_input = {
         **load_json(SCENARIOS_PATH)["scenarios"][0]["input"],
@@ -209,6 +215,39 @@ def test_full_allocation_result_rejects_unassigned_remainder() -> None:
                 "reserve_budget": 0,
                 "category_summaries": [],
                 "items": [contract_result_item(176000)],
+                "optimization_warnings": [],
+                "city_price_context": {
+                    "city_name": "杭州",
+                    "product_factor": 1,
+                    "delivery_factor": 1,
+                    "installation_factor": 1,
+                    "service_factor": 1,
+                    "source": "contract_test",
+                },
+                "rule_version": "draft",
+                "engine_version": "2.0-design",
+            }
+        )
+
+
+@pytest.mark.parametrize("status", ["owned", "exclude", "later"])
+def test_non_current_item_status_rejects_positive_budget(status: str) -> None:
+    with pytest.raises(ValidationError, match="本期预算必须为0"):
+        BudgetResultV2.model_validate(
+            {
+                "budget_mode": "ceiling",
+                "total_budget": 200000,
+                "allocated_budget": 1000,
+                "unallocated_budget": 199000,
+                "upgrade_budget": 0,
+                "reserve_budget": 0,
+                "category_summaries": [],
+                "items": [
+                    {
+                        **contract_result_item(1000),
+                        "status": status,
+                    }
+                ],
                 "optimization_warnings": [],
                 "city_price_context": {
                     "city_name": "杭州",
